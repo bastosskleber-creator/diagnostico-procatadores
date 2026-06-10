@@ -1,0 +1,27 @@
+PACOTE PARA TESTE - DIAGNOSTICO HTML
+
+Arquivos principais:
+- index.html: sistema em HTML para publicar.
+- .htaccess: tentativa de proteção por senha via Apache.
+- .htpasswd: usuário/senha para teste.
+
+Usuário inicial: tester
+Senha inicial: Teste@2026
+
+IMPORTANTE:
+1. Na UOL, suba TODOS os arquivos desta pasta para uma pasta separada, por exemplo:
+   /public_html/teste-diagnostico/
+
+2. Acesse:
+   https://seudominio.com.br/teste-diagnostico/
+
+3. Se a senha não funcionar, provavelmente a UOL exige caminho absoluto no AuthUserFile.
+   Nesse caso, use o painel da UOL para criar uma "pasta protegida por senha".
+   Essa é a forma mais segura e simples.
+
+4. Não envie esta pasta ZIP para o testador. Envie apenas o link, usuário e senha.
+
+5. O HTML foi reduzido/minificado de forma leve. Isso dificulta leitura casual,
+   mas não impede totalmente que uma pessoa técnica veja o código no navegador.
+
+6. Para teste com segurança, não importe backups reais com dados sensíveis.
