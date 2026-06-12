@@ -744,6 +744,1061 @@
 /* ====== 40L.1 - Leitura Técnica Robusta Prefeitura ====== */
 .pref-analise-integrada{background:#f7fbfc;border-left:6px solid #168EAF;border-radius:22px;padding:22px 24px;margin:22px 0;color:#1f3b4c}.pref-analise-integrada h3{color:#0f5f73;margin-bottom:12px;display:flex;align-items:center;gap:8px}.pref-analise-integrada p{margin:10px 0;line-height:1.7;text-align:justify}.pref-bloco-estrategico{background:#fff;border:1px solid #dcecf1;border-radius:20px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.03)}.pref-bloco-estrategico h4{margin-bottom:10px;color:#0f5f73;display:flex;align-items:center;gap:8px}.pref-bloco-estrategico p,.pref-bloco-estrategico li{line-height:1.65;color:#2d3e50}.pref-lista-tecnica{margin:8px 0 0 20px}.pref-lista-tecnica li{margin:7px 0}.pref-prioridade-chip{display:inline-block;padding:5px 13px;border-radius:999px;color:white;font-weight:800;font-size:.75rem}.pref-chip-critica{background:#991b1b}.pref-chip-alta{background:#b45309}.pref-chip-media{background:#1d4ed8}.pref-chip-baixa{background:#15803d}.pref-analise-aspecto-robusta{background:white;border-radius:24px;border:1px solid #dcecf1;margin:22px 0;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.035)}.pref-analise-aspecto-robusta .pref-aspecto-topo{background:#e8f7fb;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:1px solid #d2ecf4}.pref-analise-aspecto-robusta .pref-aspecto-topo h3{color:#0f5f73;margin:0}.pref-analise-aspecto-robusta .pref-aspecto-corpo{padding:20px 24px}.pref-analise-aspecto-robusta p{line-height:1.7;text-align:justify;margin:10px 0;color:#263b48}
 </style>
+
+<style>
+/* ====== V14.1 - Padronização institucional e ajustes de PDF ====== */
+.footer-sistema { margin-top:34px; padding:12px 18px; border-top:1px solid #E2E8F0; text-align:center; font-size:12px; color:#64748B; line-height:1.4; }
+.footer-pdf { margin-top:24px; padding-top:12px; border-top:1px solid #CBD5E1; text-align:center; font-size:10.5px; color:#475569; line-height:1.45; break-inside:avoid; page-break-inside:avoid; }
+.footer-pdf strong { color:#0f3b2c; }
+#page-resumo .dashboard-executivo { padding:22px 24px; margin-bottom:18px; }
+#page-resumo .indice-principal { margin-bottom:16px; }
+#page-resumo .indice-valor { font-size:3.45rem; }
+#page-resumo .resumo-executivo-texto { margin-top:12px; padding-top:12px; line-height:1.45; }
+#page-resumo .analise-tecnica-box { margin-top:16px; padding:20px; }
+@media print {
+.footer-sistema { display:none !important; } .footer-pdf { display:block !important; }
+.dashboard-executivo { padding:18px 20px !important; margin-bottom:12px !important; }
+.indice-principal { margin-bottom:12px !important; } .indice-valor { font-size:3rem !important; }
+.resumo-executivo-texto { margin-top:10px !important; padding-top:10px !important; line-height:1.4 !important; }
+.analise-tecnica-box { margin:12px 0 !important; padding:16px !important; }
+.grid-leitura-tecnica { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
+.card-body-aspecto { padding:14px !important; }
+.texto-interpretativo { font-size:.82rem !important; line-height:1.35 !important; margin-bottom:10px !important; padding-bottom:8px !important; }
+.pontos-atencao, .direcionamento-tecnico { padding:9px !important; margin-bottom:8px !important; }
+}
+</style>
+
+<style>
+/* ====== V14.2 - Ajuste do PDF: cards executivos e distribuição uniforme ====== */
+.resumo-cards-executivos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px;align-items:stretch;}
+.resumo-card-executivo-item{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:18px;padding:13px 15px;min-height:118px;display:flex;flex-direction:column;}
+.resumo-card-executivo-item strong{font-size:.95rem;line-height:1.25;margin-bottom:6px;}
+.resumo-card-executivo-item ul{margin:6px 0 0 18px;line-height:1.45;font-size:.92rem;}
+.pontos-criticos{background:#fff5f5 !important;border-left:4px solid #e53e3e;}
+.pontos-criticos strong{color:#b91c1c !important;}
+.pontos-positivos{background:#e8f5e9 !important;}
+@media print{
+    @page{size:A4 portrait;margin:8mm;}
+    .main-content{padding:0 !important;}
+    .card{padding:14px 16px !important;}
+    .card-title{font-size:1.22rem !important;margin-bottom:12px !important;}
+    .dashboard-executivo{padding:16px 18px !important;border-radius:20px !important;margin-bottom:10px !important;}
+    .indice-valor{font-size:2.75rem !important;}
+    .indice-classificacao{font-size:1.15rem !important;margin-top:4px !important;}
+    .resumo-executivo-texto{font-size:.83rem !important;line-height:1.32 !important;margin-top:8px !important;padding-top:8px !important;}
+    .resumo-cards-executivos{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important;margin-top:10px !important;}
+    .resumo-card-executivo-item{border-radius:14px !important;padding:9px 10px !important;min-height:92px !important;}
+    .resumo-card-executivo-item strong{font-size:.78rem !important;}
+    .resumo-card-executivo-item ul{font-size:.75rem !important;line-height:1.32 !important;margin-left:14px !important;}
+    .analise-tecnica-box{margin:8px 0 0 0 !important;padding:12px !important;border-radius:18px !important;}
+    .analise-tecnica-box h3{font-size:1rem !important;margin-bottom:8px !important;}
+    .grid-leitura-tecnica{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;margin-top:8px !important;}
+    .card-leitura-aspecto{border-radius:14px !important;break-inside:avoid !important;page-break-inside:avoid !important;min-height:0 !important;}
+    .card-header-aspecto{padding:9px 11px !important;gap:6px !important;}
+    .card-header-aspecto h4{font-size:.92rem !important;line-height:1.15 !important;}
+    .badge-classificacao{font-size:.58rem !important;padding:3px 8px !important;}
+    .card-body-aspecto{padding:10px 11px !important;}
+    .percentual-aspecto{font-size:1.55rem !important;margin-bottom:7px !important;}
+    .texto-interpretativo{font-size:.72rem !important;line-height:1.28 !important;margin-bottom:7px !important;padding-bottom:6px !important;}
+    .pontos-atencao,.direcionamento-tecnico{padding:7px 8px !important;border-radius:10px !important;margin-bottom:6px !important;font-size:.7rem !important;}
+    .pontos-atencao strong,.direcionamento-tecnico strong{font-size:.62rem !important;}
+    .pontos-atencao ul{margin-top:5px !important;margin-left:14px !important;}
+    .pontos-atencao li{font-size:.66rem !important;line-height:1.24 !important;}
+    .direcionamento-tecnico p{font-size:.68rem !important;line-height:1.25 !important;margin-top:5px !important;}
+    .matriz-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:8px !important;margin:10px 0 !important;}
+    .matriz-item{padding:10px !important;border-radius:14px !important;}
+    .matriz-numero{font-size:1.55rem !important;}
+    .gargalo-card,.potencialidade-card,.recomendacao-item,.sintese-executiva-card{padding:10px 12px !important;margin-bottom:8px !important;border-radius:12px !important;font-size:.82rem !important;}
+    .footer-pdf{font-size:9px !important;line-height:1.3 !important;margin-top:12px !important;padding-top:8px !important;}
+}
+@media (max-width:900px){.resumo-cards-executivos{grid-template-columns:1fr;}}
+/* ====== V14.3 - Correção de quebra final do PDF ====== */
+.analise-final-pdf{margin-top:14px;padding-top:12px;border-top:1px solid #d9e2ec;text-align:center;font-size:.85rem;color:#64748B;line-height:1.35;break-inside:avoid;page-break-inside:avoid;}
+.footer-pdf-integrado{margin-top:12px !important;padding-top:10px !important;border-top:2px solid #CBD5E1 !important;break-inside:avoid;page-break-inside:avoid;}
+.sintese-final-com-rodape{break-inside:avoid;page-break-inside:avoid;}
+@media print{.resumo-graficos-tela{display:none !important;} .analise-final-pdf{font-size:9.5px !important;margin-top:8px !important;padding-top:8px !important;} .footer-pdf-integrado{font-size:8.5px !important;line-height:1.22 !important;margin-top:8px !important;padding-top:6px !important;}}
+
+
+/* ====== V14.3 - Correção de quebra final do PDF ====== */
+.analise-final-pdf{margin-top:14px;padding-top:12px;border-top:1px solid #d9e2ec;text-align:center;font-size:.85rem;color:#64748B;line-height:1.35;break-inside:avoid;page-break-inside:avoid;}
+.footer-pdf-integrado{margin-top:12px !important;padding-top:10px !important;border-top:2px solid #CBD5E1 !important;break-inside:avoid;page-break-inside:avoid;}
+.sintese-final-com-rodape{break-inside:avoid;page-break-inside:avoid;}
+@media print{.resumo-graficos-tela{display:none !important;} .analise-final-pdf{font-size:9.5px !important;margin-top:8px !important;padding-top:8px !important;} .footer-pdf-integrado{font-size:8.5px !important;line-height:1.22 !important;margin-top:8px !important;padding-top:6px !important;}}
+</style>
+
+
+<style>
+/* ====== V14.4 - Relatório técnico mais compacto no PDF/Impressão ======
+   Objetivo: eliminar grandes espaços em branco entre assuntos, permitindo fluxo contínuo.
+   Não altera cálculos, dados, perguntas ou metodologia. */
+@media print {
+    /* Relatório Prefeitura: reduzir respiros exagerados entre seções */
+    #page-pref-relatorio .relatorio-tecnico,
+    #page-relatorio .relatorio-tecnico {
+        font-size: 12.2px !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h1,
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h1,
+    #page-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h4 {
+        break-after: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h2 {
+        margin-top: 12px !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 4px !important;
+        font-size: 1.18rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h3 {
+        margin-top: 10px !important;
+        margin-bottom: 6px !important;
+        font-size: 1.05rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h4 {
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
+        font-size: .92rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico p,
+    #page-relatorio .relatorio-tecnico p {
+        margin: 5px 0 7px 0 !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico ul,
+    #page-relatorio .relatorio-tecnico ul {
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+        padding-left: 18px !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico li,
+    #page-relatorio .relatorio-tecnico li {
+        margin: 1px 0 3px 0 !important;
+        line-height: 1.26 !important;
+    }
+
+    /* Permite que o conteúdo de um aspecto continue na página seguinte,
+       evitando página anterior quase vazia. */
+    #page-pref-relatorio .pref-analise-aspecto-robusta,
+    #page-relatorio .analise-aspecto-tecnico {
+        margin: 8px 0 10px 0 !important;
+        border-radius: 14px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo {
+        padding: 8px 12px !important;
+        gap: 6px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo h3 {
+        font-size: 1.04rem !important;
+        line-height: 1.12 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo strong {
+        font-size: 1.12rem !important;
+    }
+
+    #page-pref-relatorio .pref-prioridade-chip {
+        padding: 2px 8px !important;
+        font-size: .66rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-corpo {
+        padding: 9px 12px 10px 12px !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico {
+        margin: 6px 0 !important;
+        padding: 8px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico h4 {
+        margin: 0 0 4px 0 !important;
+        font-size: .88rem !important;
+    }
+
+    /* Blocos iniciais mais enxutos */
+    #page-pref-relatorio .dashboard-executivo,
+    #page-relatorio .dashboard-executivo {
+        padding: 16px 20px !important;
+        margin-bottom: 12px !important;
+        border-radius: 18px !important;
+    }
+
+    #page-pref-relatorio .info-grid,
+    #page-pref-relatorio .grid-cards,
+    #page-pref-relatorio .stats-cards,
+    #page-relatorio .info-grid,
+    #page-relatorio .grid-cards,
+    #page-relatorio .stats-cards {
+        gap: 8px !important;
+        margin: 8px 0 10px 0 !important;
+    }
+
+    #page-pref-relatorio .result-card,
+    #page-pref-relatorio .stat-card,
+    #page-relatorio .result-card,
+    #page-relatorio .stat-card {
+        padding: 9px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .stat-card h4,
+    #page-relatorio .stat-card h4 {
+        font-size: 1.15rem !important;
+        margin: 4px 0 !important;
+    }
+
+    #page-pref-relatorio .resumo-box,
+    #page-relatorio .resumo-box {
+        margin: 8px 0 10px 0 !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    /* Tabelas de plano ocupam menos páginas sem perder leitura */
+    #page-pref-relatorio .plano-table,
+    #page-relatorio .plano-table {
+        font-size: 10.6px !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .plano-table th,
+    #page-pref-relatorio .plano-table td,
+    #page-relatorio .plano-table th,
+    #page-relatorio .plano-table td {
+        padding: 5px 6px !important;
+        vertical-align: top !important;
+    }
+
+    /* Evita que o rodapé institucional vire página solta */
+    #page-pref-relatorio .footer-pdf,
+    #page-pref-relatorio .footer-pdf-integrado,
+    #page-relatorio .footer-pdf,
+    #page-relatorio .footer-pdf-integrado {
+        margin-top: 8px !important;
+        padding-top: 7px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Evita áreas finais vazias enormes */
+    #page-pref-relatorio .card,
+    #page-relatorio .card {
+        padding-bottom: 8px !important;
+    }
+}
+
+/* Também melhora a visualização em tela do relatório técnico, sem afetar formulários */
+#page-pref-relatorio .pref-analise-aspecto-robusta,
+#page-relatorio .analise-aspecto-tecnico {
+    margin-bottom: 16px;
+}
+#page-pref-relatorio .pref-bloco-estrategico {
+    margin: 10px 0;
+}
+</style>
+
+
+
+<style>
+/* ====== V14.5 - Correção real do relatório técnico no PDF ======
+   O conteúdo impresso é clonado sem o ID #page-pref-relatorio; por isso,
+   os ajustes agora usam seletores genéricos dentro da janela de impressão. */
+@media print {
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body {
+        font-size: 11.2px !important;
+        line-height: 1.22 !important;
+        color: #1a2c3e !important;
+    }
+
+    .card,
+    .relatorio-tecnico,
+    .pref-analise-integrada,
+    .pref-analise-aspecto-robusta,
+    .pref-bloco-estrategico,
+    .pref-aspecto-corpo,
+    .resumo-box,
+    .sintese-executiva-card,
+    .analise-aspecto-tecnico,
+    .analise-aspecto-body {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: auto !important;
+        page-break-after: auto !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .relatorio-tecnico h1,
+    .relatorio-tecnico h2,
+    .relatorio-tecnico h3,
+    .relatorio-tecnico h4,
+    .pref-analise-integrada h3,
+    .pref-bloco-estrategico h4 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .relatorio-tecnico h1 { font-size: 1.25rem !important; margin: 8px 0 7px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h2 { font-size: 1.08rem !important; margin: 10px 0 6px !important; line-height: 1.14 !important; padding: 0 !important; }
+    .relatorio-tecnico h3 { font-size: .98rem !important; margin: 8px 0 5px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h4 { font-size: .84rem !important; margin: 5px 0 3px !important; line-height: 1.14 !important; }
+
+    .relatorio-tecnico p,
+    .pref-analise-integrada p,
+    .pref-bloco-estrategico p,
+    .pref-analise-aspecto-robusta p {
+        margin: 3px 0 5px !important;
+        line-height: 1.22 !important;
+        text-align: left !important;
+    }
+
+    .relatorio-tecnico ul,
+    .pref-lista-tecnica {
+        margin: 3px 0 5px 16px !important;
+        padding-left: 12px !important;
+    }
+
+    .relatorio-tecnico li,
+    .pref-lista-tecnica li {
+        margin: 0 0 2px 0 !important;
+        line-height: 1.18 !important;
+    }
+
+    .pref-analise-integrada {
+        margin: 7px 0 8px !important;
+        padding: 9px 11px !important;
+        border-radius: 12px !important;
+    }
+
+    .pref-analise-aspecto-robusta,
+    .analise-aspecto-tecnico {
+        margin: 8px 0 9px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo,
+    .analise-aspecto-header {
+        padding: 7px 10px !important;
+        gap: 5px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo h3,
+    .analise-aspecto-header h3 {
+        font-size: .96rem !important;
+        line-height: 1.10 !important;
+        margin: 0 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo strong,
+    .analise-aspecto-percentual {
+        font-size: 1rem !important;
+        line-height: 1.10 !important;
+    }
+
+    .pref-prioridade-chip,
+    .badge-classificacao {
+        padding: 2px 7px !important;
+        font-size: .62rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-corpo,
+    .analise-aspecto-body {
+        padding: 7px 10px 8px !important;
+    }
+
+    .pref-bloco-estrategico,
+    .analise-evidencias,
+    .analise-riscos,
+    .analise-recomendacoes {
+        margin: 5px 0 !important;
+        padding: 7px 9px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-bloco-estrategico h4,
+    .analise-evidencias h4,
+    .analise-riscos h4,
+    .analise-recomendacoes h4 {
+        margin: 0 0 3px !important;
+        font-size: .78rem !important;
+        line-height: 1.12 !important;
+    }
+
+    .info-grid,
+    .grid-cards,
+    .stats-cards,
+    .matriz-grid {
+        gap: 6px !important;
+        margin: 6px 0 7px !important;
+    }
+
+    .result-card,
+    .stat-card,
+    .matriz-item {
+        padding: 7px 8px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .plano-table {
+        font-size: 9.2px !important;
+        line-height: 1.10 !important;
+    }
+    .plano-table th,
+    .plano-table td {
+        padding: 4px 5px !important;
+        vertical-align: top !important;
+    }
+
+    .footer-pdf,
+    .footer-pdf-integrado {
+        margin-top: 7px !important;
+        padding-top: 6px !important;
+        font-size: 8px !important;
+        line-height: 1.15 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    @page { size: A4 portrait; margin: 7mm; }
+}
+</style>
+
+
+
+<style>
+/* ====== V14.6 - Selos de classificação legíveis no Relatório Técnico ======
+   Corrige contraste dos selos: texto branco, fundo sólido e leitura limpa na tela e no PDF. */
+.pref-prioridade-chip,
+.badge-classificacao,
+.pref-classificacao-chip {
+    color:#ffffff !important;
+    font-weight:800 !important;
+    display:inline-block !important;
+    border-radius:999px !important;
+    padding:4px 11px !important;
+    line-height:1.15 !important;
+    text-decoration:none !important;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+}
+.pref-chip-critica, .badge-critico { background:#b91c1c !important; color:#ffffff !important; }
+.pref-chip-alta, .badge-inicial { background:#f59e0b !important; color:#ffffff !important; }
+.pref-chip-media, .badge-consolidacao { background:#2563eb !important; color:#ffffff !important; }
+.pref-chip-baixa, .badge-consolidado { background:#15803d !important; color:#ffffff !important; }
+
+@media print {
+    .pref-prioridade-chip,
+    .badge-classificacao,
+    .pref-classificacao-chip {
+        color:#ffffff !important;
+        font-weight:800 !important;
+        border-radius:999px !important;
+        padding:3px 9px !important;
+        font-size:8.5px !important;
+        line-height:1.15 !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+    }
+
+    .pref-aspecto-topo strong {
+        color:#0f5f73 !important;
+        font-weight:900 !important;
+    }
+}
+</style>
+
+
+<style>
+/* ====== V14.7 - Selos em negrito e contraste reforçado ====== */
+.badge-classificacao {
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    letter-spacing: 0.3px !important;
+    display: inline-block !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Chips de prioridade da Prefeitura */
+.pref-prioridade-chip{
+    display:inline-block !important;
+    padding:5px 13px !important;
+    border-radius:999px !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+    font-size:.75rem !important;
+    letter-spacing:.3px !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Garantia de contraste dos níveis de maturidade */
+.badge-critico{
+    background:#b91c1c !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-inicial{
+    background:#d97706 !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidacao{
+    background:#2563eb !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidado{
+    background:#15803d !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+/* Reforço específico para impressão/PDF */
+@media print {
+    .badge-classificacao {
+        padding: 5px 12px !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        color: #FFFFFF !important;
+        letter-spacing: 0.25px !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .pref-prioridade-chip{
+        padding:4px 11px !important;
+        font-size:.68rem !important;
+        font-weight:800 !important;
+        color:#FFFFFF !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+
+<style>
+/* ====== V14.9 - Correção de legibilidade dos cards "Desempenho por Aspecto" Prefeitura ======
+   Corrige o texto do nível de maturidade no PDF/Impressão, que estava ficando apagado
+   por conflito com a regra geral de small dentro dos cards. */
+.pref-resumo-card .pref-status-aspecto,
+.pref-resumo-card small.pref-status-aspecto,
+.pref-resumo-card small[style*="background"] {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    text-transform: none !important;
+    letter-spacing: 0.15px !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.28) !important;
+    border-radius: 20px !important;
+    padding: 5px 11px !important;
+    margin-top: 8px !important;
+    display: inline-block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+@media print {
+    .pref-resumo-card .pref-status-aspecto,
+    .pref-resumo-card small.pref-status-aspecto,
+    .pref-resumo-card small[style*="background"] {
+        color: #ffffff !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        line-height: 1.12 !important;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.35) !important;
+        padding: 4px 9px !important;
+        margin-top: 7px !important;
+    }
+}
+</style>
+
+
+<style>
+/* ====== V15.0 - Comparativo Prefeitura: card inicial redesenhado para tela e PDF ====== */
+.pref-comp-executivo{
+    background: linear-gradient(135deg,#f8fbfd 0%,#eef8fb 100%);
+    border: 1px solid #d6edf4;
+    border-left: 6px solid #168EAF;
+    border-radius: 26px;
+    padding: 22px;
+    margin: 20px 0 22px;
+    box-shadow: 0 8px 22px rgba(15,95,115,.08);
+}
+.pref-comp-top-grid{
+    display: grid;
+    grid-template-columns: minmax(190px,1fr) 74px minmax(210px,1fr) 74px minmax(190px,1fr);
+    gap: 14px;
+    align-items: stretch;
+}
+.pref-comp-main-card{
+    background: #ffffff;
+    border: 1px solid #dcecf1;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,.045);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.pref-comp-main-card .pref-comp-head{
+    color: #ffffff !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 12px 14px;
+    font-size: .95rem;
+}
+.pref-comp-t0 .pref-comp-head{background:linear-gradient(135deg,#0f5f73,#168EAF);}
+.pref-comp-t1 .pref-comp-head{background:linear-gradient(135deg,#15803d,#22a13f);}
+.pref-comp-evol .pref-comp-head{background:linear-gradient(135deg,#1d4ed8,#168EAF);}
+.pref-comp-body{padding:18px 16px 16px;}
+.pref-comp-percent{
+    font-size: 3rem;
+    line-height: .95;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+.pref-comp-sub{
+    font-size: .92rem;
+    color: #334155;
+    font-weight: 700;
+}
+.pref-comp-bar{
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 14px 0 10px;
+}
+.pref-comp-fill{
+    height: 100%;
+    border-radius: 999px;
+}
+.pref-comp-t0 .pref-comp-fill{background:linear-gradient(90deg,#168EAF,#1DA6C8);}
+.pref-comp-t1 .pref-comp-fill{background:linear-gradient(90deg,#15803d,#22c55e);}
+.pref-comp-status{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.78rem;
+    margin-top:8px;
+}
+.pref-comp-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2.25rem;
+    font-weight:900;
+    color:#168EAF;
+}
+.pref-comp-evol .pref-comp-percent{
+    color:#1d4ed8;
+    font-size:2.65rem;
+}
+.pref-comp-evol-note{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #c7dbe4;
+    color:#475569;
+    font-size:.86rem;
+    line-height:1.35;
+}
+.pref-comp-aspectos-wrap{
+    background:#ffffff;
+    border:1px solid #dcecf1;
+    border-radius:22px;
+    padding:16px;
+    margin-top:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-aspectos-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:#0f5f73;
+    font-weight:900;
+    font-size:1.05rem;
+    margin-bottom:12px;
+}
+.pref-comp-aspectos-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+}
+.pref-comp-aspecto-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-bottom:5px solid var(--cor-aspecto,#168EAF);
+    border-radius:18px;
+    padding:12px 11px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    break-inside:avoid;
+    page-break-inside:avoid;
+}
+.pref-comp-aspecto-nome{
+    font-size:.82rem;
+    font-weight:900;
+    color:#0f172a;
+    min-height:34px;
+    line-height:1.15;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+.pref-comp-aspecto-icone{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--cor-aspecto,#168EAF);
+    color:#ffffff !important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 28px;
+}
+.pref-comp-aspecto-valores{
+    margin-top:10px;
+    font-size:1.15rem;
+    font-weight:900;
+    color:#0f172a;
+}
+.pref-comp-aspecto-valores .seta{color:#64748b;margin:0 5px;}
+.pref-comp-aspecto-valores .t1{color:#15803d;}
+.pref-comp-delta{
+    display:inline-block;
+    margin-top:8px;
+    padding:4px 10px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.72rem;
+    background:var(--cor-delta,#15803d);
+}
+.pref-comp-impacto{
+    background:#eef8fb !important;
+    border-left:6px solid #168EAF !important;
+    border-radius:22px !important;
+    padding:18px 20px !important;
+    margin:18px 0 24px !important;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-impacto h2{
+    color:#0f5f73 !important;
+    margin-bottom:10px !important;
+    font-size:1.22rem !important;
+}
+.pref-comp-impacto p{
+    font-size:.95rem !important;
+    line-height:1.5 !important;
+    color:#1a2c3e !important;
+}
+
+@media (max-width:900px){
+    .pref-comp-top-grid{grid-template-columns:1fr;}
+    .pref-comp-arrow{display:none;}
+}
+
+@media print{
+    .pref-comp-executivo{
+        padding:14px !important;
+        border-radius:20px !important;
+        margin:8px 0 12px !important;
+        box-shadow:none !important;
+    }
+    .pref-comp-top-grid{
+        grid-template-columns:1fr 40px 1fr 40px 1fr !important;
+        gap:8px !important;
+    }
+    .pref-comp-main-card{border-radius:16px !important;box-shadow:none !important;}
+    .pref-comp-main-card .pref-comp-head{
+        padding:8px 10px !important;
+        font-size:.78rem !important;
+        color:#ffffff !important;
+    }
+    .pref-comp-body{padding:10px 9px !important;}
+    .pref-comp-percent{font-size:2.05rem !important;}
+    .pref-comp-evol .pref-comp-percent{font-size:1.9rem !important;}
+    .pref-comp-sub{font-size:.72rem !important;}
+    .pref-comp-bar{height:8px !important;margin:8px 0 6px !important;}
+    .pref-comp-status{font-size:.62rem !important;padding:4px 8px !important;}
+    .pref-comp-arrow{font-size:1.65rem !important;}
+    .pref-comp-evol-note{font-size:.66rem !important;margin-top:6px !important;padding-top:6px !important;}
+    .pref-comp-aspectos-wrap{padding:10px !important;border-radius:16px !important;margin-top:10px !important;box-shadow:none !important;}
+    .pref-comp-aspectos-title{font-size:.86rem !important;margin-bottom:8px !important;}
+    .pref-comp-aspectos-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:6px !important;}
+    .pref-comp-aspecto-card{border-radius:12px !important;padding:8px 7px !important;box-shadow:none !important;}
+    .pref-comp-aspecto-nome{font-size:.62rem !important;min-height:28px !important;}
+    .pref-comp-aspecto-icone{width:21px !important;height:21px !important;flex-basis:21px !important;font-size:.65rem !important;}
+    .pref-comp-aspecto-valores{font-size:.84rem !important;margin-top:6px !important;}
+    .pref-comp-delta{font-size:.58rem !important;padding:3px 7px !important;margin-top:5px !important;}
+    .pref-comp-impacto{padding:10px 12px !important;border-radius:16px !important;margin:10px 0 14px !important;box-shadow:none !important;}
+    .pref-comp-impacto h2{font-size:.95rem !important;margin-bottom:6px !important;}
+    .pref-comp-impacto p{font-size:.75rem !important;line-height:1.32 !important;}
+}
+</style>
+
+
+<style>
+/* ====== V15.1 - Correção do PDF Comparativo Prefeitura: evita truncamento e sobreposição ======
+   Ajuste seguro: remove setas do grid no PDF e redistribui T0, Evolução e T1 em 3 cards iguais. */
+@media print {
+    .pref-comp-executivo{
+        padding: 12px !important;
+        border-radius: 18px !important;
+        margin: 8px 0 12px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-top-grid{
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+
+    .pref-comp-arrow{
+        display: none !important;
+    }
+
+    .pref-comp-main-card{
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .pref-comp-main-card .pref-comp-head{
+        padding: 8px 8px !important;
+        font-size: .76rem !important;
+        line-height: 1.15 !important;
+        letter-spacing: .2px !important;
+        white-space: normal !important;
+        color: #ffffff !important;
+    }
+
+    .pref-comp-body{
+        padding: 10px 9px 11px !important;
+    }
+
+    .pref-comp-percent{
+        font-size: 2rem !important;
+        line-height: .95 !important;
+        margin-bottom: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-evol .pref-comp-percent{
+        font-size: 1.8rem !important;
+        line-height: 1 !important;
+    }
+
+    .pref-comp-sub{
+        font-size: .7rem !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+    }
+
+    .pref-comp-bar{
+        height: 7px !important;
+        margin: 8px 0 6px !important;
+    }
+
+    .pref-comp-status{
+        font-size: .58rem !important;
+        padding: 4px 7px !important;
+        margin-top: 5px !important;
+        line-height: 1.1 !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+
+    .pref-comp-evol-note{
+        font-size: .6rem !important;
+        line-height: 1.2 !important;
+        margin-top: 6px !important;
+        padding-top: 6px !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .pref-comp-aspectos-wrap{
+        padding: 9px !important;
+        border-radius: 15px !important;
+        margin-top: 10px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-aspectos-title{
+        font-size: .82rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 8px !important;
+        gap: 8px !important;
+    }
+
+    .pref-comp-aspectos-grid{
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+    }
+
+    .pref-comp-aspecto-card{
+        min-width: 0 !important;
+        border-radius: 11px !important;
+        padding: 7px 6px !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+    }
+
+    .pref-comp-aspecto-nome{
+        font-size: .56rem !important;
+        line-height: 1.1 !important;
+        min-height: 24px !important;
+        gap: 4px !important;
+        word-break: normal !important;
+    }
+
+    .pref-comp-aspecto-icone{
+        width: 18px !important;
+        height: 18px !important;
+        flex: 0 0 18px !important;
+        font-size: .55rem !important;
+    }
+
+    .pref-comp-aspecto-valores{
+        font-size: .74rem !important;
+        line-height: 1.15 !important;
+        margin-top: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-aspecto-valores .seta{
+        margin: 0 2px !important;
+    }
+
+    .pref-comp-delta{
+        font-size: .52rem !important;
+        padding: 3px 6px !important;
+        margin-top: 4px !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+    }
+}
+</style>
+
+
+<style>
+/* ====== V15.2 - Uniformização dos Comparativos Cooperativa/Prefeitura ====== */
+.comparativo-unificado { display:flex; flex-direction:column; gap:18px; }
+.comparativo-top-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; align-items:stretch; }
+.comparativo-metric-card { background:#ffffff; border-radius:22px; padding:18px 20px; border:1px solid #dce8e4; box-shadow:0 3px 10px rgba(0,0,0,.045); min-height:132px; display:flex; flex-direction:column; justify-content:center; text-align:center; border-top:5px solid #1e7b56; }
+.comparativo-metric-card.evolucao { border-top-color:#168EAF; background:linear-gradient(180deg,#ffffff 0%,#f1fbfd 100%); }
+.comparativo-metric-card .label { font-size:.78rem; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:#64748b; margin-bottom:6px; }
+.comparativo-metric-card .valor { font-size:2.3rem; line-height:1; font-weight:900; color:#0f3b2c; margin-bottom:7px; }
+.comparativo-metric-card.evolucao .valor { color:#0f5f73; }
+.comparativo-metric-card .sub { font-size:.86rem; font-weight:700; color:#334155; }
+.comparativo-aspectos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+.comparativo-aspecto-card { background:#ffffff; border-radius:18px; padding:14px 15px; border:1px solid #e2edf2; border-left:5px solid #1e7b56; box-shadow:0 2px 8px rgba(0,0,0,.04); min-height:120px; }
+.comparativo-aspecto-card.regressao { border-left-color:#b91c1c; }
+.comparativo-aspecto-card.estavel { border-left-color:#6b7280; }
+.comparativo-aspecto-card h4 { font-size:.94rem; color:#1a2c3e; margin:0 0 8px 0; line-height:1.18; }
+.comparativo-aspecto-card .linha { font-size:.86rem; color:#475569; margin-bottom:8px; }
+.comparativo-aspecto-card .delta { display:inline-block; padding:4px 10px; border-radius:999px; font-size:.76rem; font-weight:900; color:white; background:#15803d; }
+.comparativo-aspecto-card.regressao .delta { background:#b91c1c; }
+.comparativo-aspecto-card.estavel .delta { background:#6b7280; }
+.comparativo-section-card { background:#ffffff; border-radius:22px; border:1px solid #e2edf2; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.035); }
+.comparativo-section-card h3 { color:#0f3b2c; font-size:1.1rem; margin:0 0 10px 0; display:flex; align-items:center; gap:8px; }
+.comparativo-insights-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+.comparativo-prioridade { border-left:6px solid #f59e0b; background:#fffaf0; }
+.comparativo-prioridade h3 { color:#92400e; }
+.comparativo-radar-card { background:#ffffff; border-radius:24px; padding:18px 20px; border:1px solid #e2edf2; box-shadow:0 3px 10px rgba(0,0,0,.04); }
+.comparativo-radar-card h3 { color:#0f3b2c; margin-bottom:12px; }
+@media print {
+    .comparativo-unificado { gap:10px !important; }
+    .comparativo-top-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:8px !important; }
+    .comparativo-metric-card { border-radius:14px !important; padding:10px 12px !important; min-height:86px !important; box-shadow:none !important; }
+    .comparativo-metric-card .label { font-size:.62rem !important; margin-bottom:4px !important; }
+    .comparativo-metric-card .valor { font-size:1.55rem !important; margin-bottom:4px !important; }
+    .comparativo-metric-card .sub { font-size:.66rem !important; line-height:1.15 !important; }
+    .comparativo-section-card, .comparativo-radar-card { border-radius:14px !important; padding:10px 12px !important; box-shadow:none !important; break-inside:avoid !important; page-break-inside:avoid !important; }
+    .comparativo-section-card h3, .comparativo-radar-card h3 { font-size:.95rem !important; margin-bottom:6px !important; }
+    .comparativo-aspectos-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:7px !important; }
+    .comparativo-aspecto-card { min-height:78px !important; border-radius:11px !important; padding:8px 9px !important; box-shadow:none !important; }
+    .comparativo-aspecto-card h4 { font-size:.68rem !important; margin-bottom:4px !important; }
+    .comparativo-aspecto-card .linha { font-size:.62rem !important; margin-bottom:4px !important; }
+    .comparativo-aspecto-card .delta { font-size:.58rem !important; padding:2px 7px !important; }
+    .comparativo-insights-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:8px !important; }
+    .comparativo-insights-grid .insight-card { padding:9px 10px !important; margin-bottom:0 !important; border-radius:12px !important; box-shadow:none !important; font-size:.72rem !important; }
+    .comparativo-insights-grid .insight-card h3 { font-size:.84rem !important; margin-bottom:5px !important; }
+    #comparativeRadarChart, #prefComparativoRadarChart { max-height:310px !important; }
+}
+@media (max-width:900px){ .comparativo-top-grid{grid-template-columns:1fr;} }
+</style>
 </head>
 <body>
 <div class="app-container">
@@ -764,7 +1819,7 @@
             <div class="nav-item" data-page="pref-resumo"><i class="fas fa-chart-pie"></i><span>Resumo Prefeitura</span></div>
             <div class="nav-item" data-page="pref-plano"><i class="fas fa-tasks"></i><span>Plano de Ação Prefeitura</span></div>
             <div class="nav-item" data-page="pref-solucoes"><i class="fas fa-lightbulb"></i><span>Soluções Prefeitura</span></div>
-            <div class="nav-item" data-page="pref-comparativo"><i class="fas fa-chart-line"></i><span>Comparativo Prefeitura</span></div>
+            <div class="nav-item" data-page="pref-comparativo"><i class="fas fa-chart-line"></i><span>Comparativo Prefeitura T0 x T1</span></div>
             <div class="nav-item" data-page="pref-relatorio"><i class="fas fa-file-alt"></i><span>Relatório Prefeitura</span></div>
             <div class="nav-section-title geral">GERAL</div>
             <div class="nav-item" data-page="backup"><i class="fas fa-database"></i><span>Backup</span></div>
@@ -831,7 +1886,7 @@
             </div>
         </div>
         
-        <div id="page-comparativo" class="page"><div class="card"><div class="card-title">Comparativo Evolutivo T0 x T1</div><div id="comparativoContent"></div></div></div>
+        <div id="page-comparativo" class="page"><div class="card"><div class="card-title"><i class="fas fa-chart-line"></i> Comparativo Cooperativa T0 x T1</div><div class="prefeitura-help-box" style="background:#eef8f3;border-left-color:#1e7b56;color:#0f3b2c;"><strong>Comparativo Cooperativa:</strong> compara os resultados do diagnóstico da cooperativa entre T0 e T1, destacando evolução geral, desempenho por aspecto, avanços, pontos estagnados e prioridade do próximo ciclo.</div><button type="button" id="btnImprimirComparativoCoop" class="btn-print-resumo"><i class="fas fa-print"></i> Imprimir Comparativo Cooperativa / PDF</button><div id="comparativoContent"></div></div></div>
         <div id="page-relatorio" class="page"><div class="card"><div class="card-title">Relatório Técnico - <span id="relatorioTipoDisplay">T0</span></div><div id="relatorioContent"></div><button id="imprimirBtn" style="margin-top:20px"><i class="fas fa-print"></i> Imprimir / PDF</button></div></div>
 
         <div id="page-pref-cadastro" class="page">
@@ -960,7 +2015,7 @@
 
         <div id="page-pref-comparativo" class="page">
             <div class="card prefeitura-card">
-                <div class="card-title prefeitura-card-title"><i class="fas fa-chart-line"></i> Comparativo Evolutivo T0 × T1 Prefeitura</div>
+                <div class="card-title prefeitura-card-title"><i class="fas fa-chart-line"></i> Comparativo Prefeitura T0 x T1</div>
                 <div class="prefeitura-help-box">
                     <strong>Comparativo Prefeitura:</strong> compara os resultados do diagnóstico municipal entre T0 e T1, destacando evolução geral, desempenho por aspecto, avanços e pontos estagnados.
                 </div>
@@ -1014,6 +2069,11 @@
                         <button id="exportTerritorialBtn" style="background:#0f766e;"><i class="fas fa-globe-americas"></i> Exportar Território Completo</button>
                     </div>
                 </div>
+
+                <div class="prefeitura-help-box" style="margin-top:24px;">
+                    <strong>Base de teste:</strong> use este botão para preencher automaticamente dados fictícios de Cooperativa e Prefeitura, incluindo T0 e T1, planos de ação e soluções. Essa opção é indicada apenas para demonstração e validação pelos consultores.
+                </div>
+                <button id="carregarBaseTesteBtn" type="button" style="background:#7c3aed;"><i class="fas fa-vial"></i> Carregar Base de Teste T0 e T1</button>
 
                 <div class="prefeitura-help-box" style="margin-top:24px;">
                     <strong>Importação:</strong> use este botão para restaurar arquivos de backup individual, por entidade ou territorial.
@@ -1910,6 +2970,72 @@
         if(geral <= 80) return `A organização apresenta desenvolvimento intermediário, com práticas parcialmente implantadas e oportunidades claras de consolidação.`;
         return `A organização apresenta alto nível de maturidade, demonstrando práticas robustas, boa organização interna e capacidade de sustentabilidade institucional.`;
     }
+
+
+    function listarAspectosResumoCooperativa(lista) {
+        if(!lista || lista.length === 0) return "não informado";
+        let nomes = lista.map(i => `${i.aspecto.replace("Aspectos ", "")} (${i.percentual.toFixed(1)}%)`);
+        if(nomes.length === 1) return nomes[0];
+        return nomes.slice(0, -1).join(", ") + " e " + nomes.slice(-1);
+    }
+
+    function gerarPrioridadesResumoCooperativa(indices) {
+        let ordenados = [...indices].sort((a,b) => a.percentual - b.percentual);
+        let criticos = ordenados.filter(i => i.percentual < 70).slice(0, 3);
+        let base = criticos.length > 0 ? criticos : ordenados.slice(0, 2);
+        return base.map(i => i.aspecto.replace("Aspectos ", ""));
+    }
+
+    function gerarTextoExecutivoResumoRobusto(indices, geral, classif) {
+        if(!indices || indices.length === 0) return gerarTextoExecutivoResumo(geral, classif);
+
+        let ordenadosAsc = [...indices].sort((a,b) => a.percentual - b.percentual);
+        let ordenadosDesc = [...indices].sort((a,b) => b.percentual - a.percentual);
+        let melhores = ordenadosDesc.slice(0, 2);
+        let gargalos = ordenadosAsc.filter(i => i.percentual < 70).slice(0, 2);
+        if(gargalos.length === 0) gargalos = ordenadosAsc.slice(0, 2);
+        let prioridades = gerarPrioridadesResumoCooperativa(indices);
+        let nomeOrg = (dadosCooperativa && dadosCooperativa.nomeOrg) ? dadosCooperativa.nomeOrg : "A cooperativa";
+        let tipo = getTipoAtual();
+
+        let leituraBase = "";
+        if(geral <= 40) leituraBase = "revela uma situação crítica, com fragilidades estruturais que exigem intervenção imediata na gestão, na operação e na articulação institucional";
+        else if(geral <= 60) leituraBase = "indica estrutura inicial, com processos ainda pouco consolidados e necessidade de organização técnica prioritária";
+        else if(geral <= 80) leituraBase = "demonstra estrutura em consolidação, com práticas importantes já implantadas, mas ainda dependentes de padronização, rotina de gestão e acompanhamento técnico";
+        else leituraBase = "demonstra estrutura consolidada, com boa maturidade institucional e capacidade de avançar para melhoria contínua, escala operacional e sustentabilidade econômica";
+
+        let gargaloTexto = listarAspectosResumoCooperativa(gargalos);
+        let melhorTexto = listarAspectosResumoCooperativa(melhores);
+        let prioridadeTexto = prioridades.length ? prioridades.join(", ") : "as ações de maior criticidade identificadas no diagnóstico";
+
+        return `O diagnóstico situacional ${tipo} de <strong>${nomeOrg}</strong> apresenta índice geral de maturidade de <strong>${geral.toFixed(1)}%</strong>, classificado como <strong>${classif}</strong>. Esse resultado ${leituraBase}. A análise dos aspectos avaliados evidencia melhor desempenho em <strong>${melhorTexto}</strong>, indicando pontos de sustentação para o avanço da organização. Em contrapartida, as maiores necessidades de intervenção concentram-se em <strong>${gargaloTexto}</strong>, fatores que podem limitar produtividade, segurança, regularidade administrativa ou capacidade de comercialização. Para o próximo ciclo, recomenda-se utilizar este resumo como instrumento de decisão, priorizando ações em <strong>${prioridadeTexto}</strong>, com responsáveis definidos, prazos, evidências de execução e indicadores de acompanhamento.`;
+    }
+
+    function gerarCardsExecutivosResumoCooperativa(indices) {
+        if(!indices || indices.length === 0) return "";
+        let desc = [...indices].sort((a,b) => b.percentual - a.percentual);
+        let asc = [...indices].sort((a,b) => a.percentual - b.percentual);
+        let melhores = desc.slice(0, 2);
+        let gargalos = asc.filter(i => i.percentual < 70).slice(0, 2);
+        if(gargalos.length === 0) gargalos = asc.slice(0, 2);
+        let prioridades = gerarPrioridadesResumoCooperativa(indices);
+        let mkLista = arr => arr.map(i => `<li><strong>${i.aspecto.replace("Aspectos ", "")}</strong> — ${i.percentual.toFixed(1)}%</li>`).join("");
+        let mkPrioridades = prioridades.map(p => `<li>${p}</li>`).join("");
+        return `<div class="resumo-cards-executivos">
+            <div class="resumo-card-executivo-item">
+                <strong><i class="fas fa-star"></i> Destaques positivos</strong>
+                <ul>${mkLista(melhores)}</ul>
+            </div>
+            <div class="resumo-card-executivo-item">
+                <strong><i class="fas fa-exclamation-triangle"></i> Pontos de atenção</strong>
+                <ul>${mkLista(gargalos)}</ul>
+            </div>
+            <div class="resumo-card-executivo-item">
+                <strong><i class="fas fa-tasks"></i> Prioridades do ciclo</strong>
+                <ul>${mkPrioridades}</ul>
+            </div>
+        </div>`;
+    }
     
     function gerarAnalisePorAspecto(aspecto, percentual) {
         let classificacao = "";
@@ -2012,8 +3138,13 @@
                         <strong><i class="fas fa-exclamation-triangle"></i> Pontos de atenção</strong>
                         <ul>${pontosAtencao.map(p => `<li>${p}</li>`).join('')}</ul>
                     </div>`;
+        } else if (percentual <= 25) {
+            html += `<div class="pontos-atencao pontos-criticos">
+                        <strong><i class="fas fa-exclamation-circle"></i> Pontos críticos</strong>
+                        <p style="margin: 8px 0 0 0; font-size: 0.8rem;">Não há evidências suficientes de práticas implantadas neste aspecto. Recomenda-se validar os itens não atendidos e priorizar correções no plano de ação.</p>
+                    </div>`;
         } else {
-            html += `<div class="pontos-atencao" style="background: #e8f5e9;">
+            html += `<div class="pontos-atencao pontos-positivos">
                         <strong><i class="fas fa-check-circle"></i> Pontos positivos</strong>
                         <p style="margin: 8px 0 0 0; font-size: 0.8rem;">Não foram identificados pontos críticos neste aspecto.</p>
                     </div>`;
@@ -2459,14 +3590,16 @@
         let sinteseTexto = `A organização apresenta índice geral de ${geral.toFixed(1)}%, classificada como "${classif}". Os principais pontos de atenção concentram-se em ${principaisGargalosTexto}. Como potencialidades, destacam-se ${principaisPotencialidadesTexto}. Recomenda-se priorizar as ações de maior criticidade e manter o acompanhamento contínuo dos indicadores.`;
         
         let sinteseHtml = `
-        <div class="sintese-executiva-card">
+        <div class="sintese-executiva-card sintese-final-com-rodape">
             <h3><i class="fas fa-file-alt"></i> Síntese Executiva Final</h3>
             <p>${sinteseTexto}</p>
+            <div class="analise-final-pdf"><i class="fas fa-chart-line"></i> Análise gerada automaticamente com base no diagnóstico situacional e observações técnicas.</div>
+            <div class="footer-pdf footer-pdf-integrado"><strong>Pró-Catadores – Diagnóstico Situacional</strong><br>© 2026 Sebrae – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas.<br>Este documento foi gerado automaticamente pelo Sistema Pró-Catadores, com base nas informações registradas no diagnóstico situacional.<br>É proibida a reprodução total ou parcial deste material sem autorização prévia.<br>Todos os direitos reservados.</div>
         </div>`;
         
-        let graficosHtml = `<div style="display:flex; flex-wrap:wrap; gap:30px; margin-top:20px;"><canvas id="barChart" width="400" height="250" style="max-width:500px;"></canvas><canvas id="radarChart" width="400" height="250" style="max-width:500px;"></canvas></div>`;
+        let graficosHtml = `<div class="no-print resumo-graficos-tela" style="display:flex; flex-wrap:wrap; gap:30px; margin-top:20px;"><canvas id="barChart" width="400" height="250" style="max-width:500px;"></canvas><canvas id="radarChart" width="400" height="250" style="max-width:500px;"></canvas></div>`;
         
-        let html = `<div class="dashboard-executivo"><div class="indice-principal"><div class="indice-valor">${geral.toFixed(1)}%</div><div class="indice-classificacao">${classif}</div><div style="font-size:0.9rem; margin-top:8px;">Diagnóstico ${getTipoAtual()}</div></div><div class="resumo-executivo-texto"><i class="fas fa-chart-line"></i> ${gerarTextoExecutivoResumo(geral, classif)}</div></div>`;
+        let html = `<div class="dashboard-executivo"><div class="indice-principal"><div class="indice-valor">${geral.toFixed(1)}%</div><div class="indice-classificacao">${classif}</div><div style="font-size:0.9rem; margin-top:8px;">Diagnóstico ${getTipoAtual()}</div></div><div class="resumo-executivo-texto"><i class="fas fa-chart-line"></i> ${gerarTextoExecutivoResumoRobusto(indices, geral, classif)}</div>${gerarCardsExecutivosResumoCooperativa(indices)}</div>`;
         html += `<div class="analise-tecnica-box"><h3><i class="fas fa-microphone-alt"></i> Leitura Técnica por Aspecto</h3>`;
         html += `<div class="grid-leitura-tecnica">`;
         
@@ -2479,7 +3612,6 @@
         html += `</div></div>${matriz}${gargalos}${potencialidades}${recomendacoes}${gerarObservacoesRelevantesResumo()}`;
         html += sinteseHtml;
         html += graficosHtml;
-        html += `<div style="margin-top:24px; font-size:0.85rem; color:#666; text-align:center; padding-top:16px; border-top:1px solid #e2edf2;"><i class="fas fa-chart-line"></i> Análise gerada automaticamente com base no diagnóstico situacional e observações técnicas.</div>`;
         
         document.getElementById("resumoContent").innerHTML = html;
         
@@ -2511,6 +3643,1332 @@
         }
     }
     
+
+    function imprimirConteudoSeguro(seletorConteudo, tituloDocumento, corDestaque = "#1e7b56") {
+        const elementoOriginal = document.querySelector(seletorConteudo);
+        if (!elementoOriginal) {
+            alert("Conteúdo para impressão não encontrado.");
+            return;
+        }
+
+        const elementoClone = elementoOriginal.cloneNode(true);
+        elementoClone.querySelectorAll("button, .btn-print-resumo, .no-print").forEach(el => el.remove());
+
+        const conteudo = elementoClone.innerHTML || "";
+        if (!conteudo.trim()) {
+            alert("Gere ou atualize o conteúdo antes de imprimir/salvar em PDF.");
+            return;
+        }
+
+        const janelaImpressao = window.open("", "_blank");
+        if (!janelaImpressao) {
+            alert("O navegador bloqueou a janela de impressão. Libere pop-ups para este arquivo/sistema e tente novamente.");
+            return;
+        }
+
+        janelaImpressao.document.open();
+        janelaImpressao.document.write(`
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>${tituloDocumento}</title>
+                <style>
+                    * {
+                        box-sizing: border-box;
+                        font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                        color-adjust: exact !important;
+                    }
+                    body {
+                        background: #ffffff !important;
+                        color: #1a2c3e;
+                        margin: 0;
+                        padding: 10mm;
+                    }
+                    .card {
+                        box-shadow: none !important;
+                        border: none !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                        background: #ffffff !important;
+                    }
+                    .card-title {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        margin-bottom: 18px;
+                        color: ${corDestaque};
+                        border-left: 6px solid ${corDestaque};
+                        padding-left: 14px;
+                    }
+                    .dashboard-executivo {
+                        color: white !important;
+                        border-radius: 20px;
+                        padding: 22px;
+                        margin-bottom: 18px;
+                    }
+                    .dashboard-executivo * { color: white !important; }
+                    .grid-cards, .stats-cards, .matriz-grid, .info-grid, .grid-leitura-tecnica {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                        gap: 12px;
+                    }
+                    .result-card, .stat-card, .matriz-item, .card-leitura-aspecto, .analise-aspecto-tecnico,
+                    .pref-analise-aspecto-robusta, .sintese-executiva-card, .analise-tecnica-box,
+                    .gargalo-card, .potencialidade-card, .observacao-resumo-item, .recomendacao-item {
+                        break-inside: avoid;
+                        page-break-inside: avoid;
+                    }
+                    table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+                    th, td { border: 1px solid #d1d5db; padding: 8px; vertical-align: top; }
+                    th { background: ${corDestaque} !important; color: #ffffff !important; }
+                    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+                    canvas { max-width: 100% !important; height: auto !important; }
+                    .footer-sistema { display: none !important; }
+                    .footer-pdf { margin-top:24px; padding-top:12px; border-top:1px solid #CBD5E1; text-align:center; font-size:10.5px; color:#475569; line-height:1.45; break-inside:avoid; page-break-inside:avoid; }
+                    .footer-pdf strong { color: ${corDestaque}; }
+                    @page { size: A4 portrait; margin: 10mm; }
+                    @media print {
+                        body { padding: 0; }
+                        button, .no-print { display: none !important; }
+                    }
+                </style>
+            
+<style>
+/* ====== V14.2 - Ajuste do PDF: cards executivos e distribuição uniforme ====== */
+.resumo-cards-executivos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px;align-items:stretch;}
+.resumo-card-executivo-item{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:18px;padding:13px 15px;min-height:118px;display:flex;flex-direction:column;}
+.resumo-card-executivo-item strong{font-size:.95rem;line-height:1.25;margin-bottom:6px;}
+.resumo-card-executivo-item ul{margin:6px 0 0 18px;line-height:1.45;font-size:.92rem;}
+.pontos-criticos{background:#fff5f5 !important;border-left:4px solid #e53e3e;}
+.pontos-criticos strong{color:#b91c1c !important;}
+.pontos-positivos{background:#e8f5e9 !important;}
+@media print{
+    @page{size:A4 portrait;margin:8mm;}
+    .main-content{padding:0 !important;}
+    .card{padding:14px 16px !important;}
+    .card-title{font-size:1.22rem !important;margin-bottom:12px !important;}
+    .dashboard-executivo{padding:16px 18px !important;border-radius:20px !important;margin-bottom:10px !important;}
+    .indice-valor{font-size:2.75rem !important;}
+    .indice-classificacao{font-size:1.15rem !important;margin-top:4px !important;}
+    .resumo-executivo-texto{font-size:.83rem !important;line-height:1.32 !important;margin-top:8px !important;padding-top:8px !important;}
+    .resumo-cards-executivos{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important;margin-top:10px !important;}
+    .resumo-card-executivo-item{border-radius:14px !important;padding:9px 10px !important;min-height:92px !important;}
+    .resumo-card-executivo-item strong{font-size:.78rem !important;}
+    .resumo-card-executivo-item ul{font-size:.75rem !important;line-height:1.32 !important;margin-left:14px !important;}
+    .analise-tecnica-box{margin:8px 0 0 0 !important;padding:12px !important;border-radius:18px !important;}
+    .analise-tecnica-box h3{font-size:1rem !important;margin-bottom:8px !important;}
+    .grid-leitura-tecnica{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;margin-top:8px !important;}
+    .card-leitura-aspecto{border-radius:14px !important;break-inside:avoid !important;page-break-inside:avoid !important;min-height:0 !important;}
+    .card-header-aspecto{padding:9px 11px !important;gap:6px !important;}
+    .card-header-aspecto h4{font-size:.92rem !important;line-height:1.15 !important;}
+    .badge-classificacao{font-size:.58rem !important;padding:3px 8px !important;}
+    .card-body-aspecto{padding:10px 11px !important;}
+    .percentual-aspecto{font-size:1.55rem !important;margin-bottom:7px !important;}
+    .texto-interpretativo{font-size:.72rem !important;line-height:1.28 !important;margin-bottom:7px !important;padding-bottom:6px !important;}
+    .pontos-atencao,.direcionamento-tecnico{padding:7px 8px !important;border-radius:10px !important;margin-bottom:6px !important;font-size:.7rem !important;}
+    .pontos-atencao strong,.direcionamento-tecnico strong{font-size:.62rem !important;}
+    .pontos-atencao ul{margin-top:5px !important;margin-left:14px !important;}
+    .pontos-atencao li{font-size:.66rem !important;line-height:1.24 !important;}
+    .direcionamento-tecnico p{font-size:.68rem !important;line-height:1.25 !important;margin-top:5px !important;}
+    .matriz-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:8px !important;margin:10px 0 !important;}
+    .matriz-item{padding:10px !important;border-radius:14px !important;}
+    .matriz-numero{font-size:1.55rem !important;}
+    .gargalo-card,.potencialidade-card,.recomendacao-item,.sintese-executiva-card{padding:10px 12px !important;margin-bottom:8px !important;border-radius:12px !important;font-size:.82rem !important;}
+    .footer-pdf{font-size:9px !important;line-height:1.3 !important;margin-top:12px !important;padding-top:8px !important;}
+}
+@media (max-width:900px){.resumo-cards-executivos{grid-template-columns:1fr;}}
+/* ====== V14.3 - Correção de quebra final do PDF ====== */
+.analise-final-pdf{margin-top:14px;padding-top:12px;border-top:1px solid #d9e2ec;text-align:center;font-size:.85rem;color:#64748B;line-height:1.35;break-inside:avoid;page-break-inside:avoid;}
+.footer-pdf-integrado{margin-top:12px !important;padding-top:10px !important;border-top:2px solid #CBD5E1 !important;break-inside:avoid;page-break-inside:avoid;}
+.sintese-final-com-rodape{break-inside:avoid;page-break-inside:avoid;}
+@media print{.resumo-graficos-tela{display:none !important;} .analise-final-pdf{font-size:9.5px !important;margin-top:8px !important;padding-top:8px !important;} .footer-pdf-integrado{font-size:8.5px !important;line-height:1.22 !important;margin-top:8px !important;padding-top:6px !important;}}
+
+</style>
+
+
+<style>
+/* ====== V14.4 - Relatório técnico mais compacto no PDF/Impressão ======
+   Objetivo: eliminar grandes espaços em branco entre assuntos, permitindo fluxo contínuo.
+   Não altera cálculos, dados, perguntas ou metodologia. */
+@media print {
+    /* Relatório Prefeitura: reduzir respiros exagerados entre seções */
+    #page-pref-relatorio .relatorio-tecnico,
+    #page-relatorio .relatorio-tecnico {
+        font-size: 12.2px !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h1,
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h1,
+    #page-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h4 {
+        break-after: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h2 {
+        margin-top: 12px !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 4px !important;
+        font-size: 1.18rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h3 {
+        margin-top: 10px !important;
+        margin-bottom: 6px !important;
+        font-size: 1.05rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h4 {
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
+        font-size: .92rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico p,
+    #page-relatorio .relatorio-tecnico p {
+        margin: 5px 0 7px 0 !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico ul,
+    #page-relatorio .relatorio-tecnico ul {
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+        padding-left: 18px !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico li,
+    #page-relatorio .relatorio-tecnico li {
+        margin: 1px 0 3px 0 !important;
+        line-height: 1.26 !important;
+    }
+
+    /* Permite que o conteúdo de um aspecto continue na página seguinte,
+       evitando página anterior quase vazia. */
+    #page-pref-relatorio .pref-analise-aspecto-robusta,
+    #page-relatorio .analise-aspecto-tecnico {
+        margin: 8px 0 10px 0 !important;
+        border-radius: 14px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo {
+        padding: 8px 12px !important;
+        gap: 6px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo h3 {
+        font-size: 1.04rem !important;
+        line-height: 1.12 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo strong {
+        font-size: 1.12rem !important;
+    }
+
+    #page-pref-relatorio .pref-prioridade-chip {
+        padding: 2px 8px !important;
+        font-size: .66rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-corpo {
+        padding: 9px 12px 10px 12px !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico {
+        margin: 6px 0 !important;
+        padding: 8px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico h4 {
+        margin: 0 0 4px 0 !important;
+        font-size: .88rem !important;
+    }
+
+    /* Blocos iniciais mais enxutos */
+    #page-pref-relatorio .dashboard-executivo,
+    #page-relatorio .dashboard-executivo {
+        padding: 16px 20px !important;
+        margin-bottom: 12px !important;
+        border-radius: 18px !important;
+    }
+
+    #page-pref-relatorio .info-grid,
+    #page-pref-relatorio .grid-cards,
+    #page-pref-relatorio .stats-cards,
+    #page-relatorio .info-grid,
+    #page-relatorio .grid-cards,
+    #page-relatorio .stats-cards {
+        gap: 8px !important;
+        margin: 8px 0 10px 0 !important;
+    }
+
+    #page-pref-relatorio .result-card,
+    #page-pref-relatorio .stat-card,
+    #page-relatorio .result-card,
+    #page-relatorio .stat-card {
+        padding: 9px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .stat-card h4,
+    #page-relatorio .stat-card h4 {
+        font-size: 1.15rem !important;
+        margin: 4px 0 !important;
+    }
+
+    #page-pref-relatorio .resumo-box,
+    #page-relatorio .resumo-box {
+        margin: 8px 0 10px 0 !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    /* Tabelas de plano ocupam menos páginas sem perder leitura */
+    #page-pref-relatorio .plano-table,
+    #page-relatorio .plano-table {
+        font-size: 10.6px !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .plano-table th,
+    #page-pref-relatorio .plano-table td,
+    #page-relatorio .plano-table th,
+    #page-relatorio .plano-table td {
+        padding: 5px 6px !important;
+        vertical-align: top !important;
+    }
+
+    /* Evita que o rodapé institucional vire página solta */
+    #page-pref-relatorio .footer-pdf,
+    #page-pref-relatorio .footer-pdf-integrado,
+    #page-relatorio .footer-pdf,
+    #page-relatorio .footer-pdf-integrado {
+        margin-top: 8px !important;
+        padding-top: 7px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Evita áreas finais vazias enormes */
+    #page-pref-relatorio .card,
+    #page-relatorio .card {
+        padding-bottom: 8px !important;
+    }
+}
+
+/* Também melhora a visualização em tela do relatório técnico, sem afetar formulários */
+#page-pref-relatorio .pref-analise-aspecto-robusta,
+#page-relatorio .analise-aspecto-tecnico {
+    margin-bottom: 16px;
+}
+#page-pref-relatorio .pref-bloco-estrategico {
+    margin: 10px 0;
+}
+</style>
+
+
+
+<style>
+/* ====== V14.5 - Correção real do relatório técnico no PDF ======
+   O conteúdo impresso é clonado sem o ID #page-pref-relatorio; por isso,
+   os ajustes agora usam seletores genéricos dentro da janela de impressão. */
+@media print {
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body {
+        font-size: 11.2px !important;
+        line-height: 1.22 !important;
+        color: #1a2c3e !important;
+    }
+
+    .card,
+    .relatorio-tecnico,
+    .pref-analise-integrada,
+    .pref-analise-aspecto-robusta,
+    .pref-bloco-estrategico,
+    .pref-aspecto-corpo,
+    .resumo-box,
+    .sintese-executiva-card,
+    .analise-aspecto-tecnico,
+    .analise-aspecto-body {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: auto !important;
+        page-break-after: auto !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .relatorio-tecnico h1,
+    .relatorio-tecnico h2,
+    .relatorio-tecnico h3,
+    .relatorio-tecnico h4,
+    .pref-analise-integrada h3,
+    .pref-bloco-estrategico h4 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .relatorio-tecnico h1 { font-size: 1.25rem !important; margin: 8px 0 7px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h2 { font-size: 1.08rem !important; margin: 10px 0 6px !important; line-height: 1.14 !important; padding: 0 !important; }
+    .relatorio-tecnico h3 { font-size: .98rem !important; margin: 8px 0 5px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h4 { font-size: .84rem !important; margin: 5px 0 3px !important; line-height: 1.14 !important; }
+
+    .relatorio-tecnico p,
+    .pref-analise-integrada p,
+    .pref-bloco-estrategico p,
+    .pref-analise-aspecto-robusta p {
+        margin: 3px 0 5px !important;
+        line-height: 1.22 !important;
+        text-align: left !important;
+    }
+
+    .relatorio-tecnico ul,
+    .pref-lista-tecnica {
+        margin: 3px 0 5px 16px !important;
+        padding-left: 12px !important;
+    }
+
+    .relatorio-tecnico li,
+    .pref-lista-tecnica li {
+        margin: 0 0 2px 0 !important;
+        line-height: 1.18 !important;
+    }
+
+    .pref-analise-integrada {
+        margin: 7px 0 8px !important;
+        padding: 9px 11px !important;
+        border-radius: 12px !important;
+    }
+
+    .pref-analise-aspecto-robusta,
+    .analise-aspecto-tecnico {
+        margin: 8px 0 9px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo,
+    .analise-aspecto-header {
+        padding: 7px 10px !important;
+        gap: 5px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo h3,
+    .analise-aspecto-header h3 {
+        font-size: .96rem !important;
+        line-height: 1.10 !important;
+        margin: 0 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo strong,
+    .analise-aspecto-percentual {
+        font-size: 1rem !important;
+        line-height: 1.10 !important;
+    }
+
+    .pref-prioridade-chip,
+    .badge-classificacao {
+        padding: 2px 7px !important;
+        font-size: .62rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-corpo,
+    .analise-aspecto-body {
+        padding: 7px 10px 8px !important;
+    }
+
+    .pref-bloco-estrategico,
+    .analise-evidencias,
+    .analise-riscos,
+    .analise-recomendacoes {
+        margin: 5px 0 !important;
+        padding: 7px 9px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-bloco-estrategico h4,
+    .analise-evidencias h4,
+    .analise-riscos h4,
+    .analise-recomendacoes h4 {
+        margin: 0 0 3px !important;
+        font-size: .78rem !important;
+        line-height: 1.12 !important;
+    }
+
+    .info-grid,
+    .grid-cards,
+    .stats-cards,
+    .matriz-grid {
+        gap: 6px !important;
+        margin: 6px 0 7px !important;
+    }
+
+    .result-card,
+    .stat-card,
+    .matriz-item {
+        padding: 7px 8px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .plano-table {
+        font-size: 9.2px !important;
+        line-height: 1.10 !important;
+    }
+    .plano-table th,
+    .plano-table td {
+        padding: 4px 5px !important;
+        vertical-align: top !important;
+    }
+
+    .footer-pdf,
+    .footer-pdf-integrado {
+        margin-top: 7px !important;
+        padding-top: 6px !important;
+        font-size: 8px !important;
+        line-height: 1.15 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    @page { size: A4 portrait; margin: 7mm; }
+}
+</style>
+
+
+<style>
+/* ====== V14.7 - Selos em negrito e contraste reforçado ====== */
+.badge-classificacao {
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    letter-spacing: 0.3px !important;
+    display: inline-block !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Chips de prioridade da Prefeitura */
+.pref-prioridade-chip{
+    display:inline-block !important;
+    padding:5px 13px !important;
+    border-radius:999px !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+    font-size:.75rem !important;
+    letter-spacing:.3px !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Garantia de contraste dos níveis de maturidade */
+.badge-critico{
+    background:#b91c1c !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-inicial{
+    background:#d97706 !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidacao{
+    background:#2563eb !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidado{
+    background:#15803d !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+/* Reforço específico para impressão/PDF */
+@media print {
+    .badge-classificacao {
+        padding: 5px 12px !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        color: #FFFFFF !important;
+        letter-spacing: 0.25px !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .pref-prioridade-chip{
+        padding:4px 11px !important;
+        font-size:.68rem !important;
+        font-weight:800 !important;
+        color:#FFFFFF !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+
+
+
+<style>
+/* ====== V14.8 - Correção completa: Resumo Prefeitura impresso com cards e cores ======
+   Objetivo: preservar o layout visual em card no PDF/Impressão do módulo Resumo Prefeitura.
+   Não altera cálculos, diagnósticos, perguntas, plano de ação ou dados salvos. */
+.pref-resumo-aspectos {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 12px !important;
+    margin: 16px 0 22px !important;
+    align-items: stretch !important;
+}
+
+.pref-resumo-card {
+    background: #ffffff !important;
+    border-left: 5px solid #1DA6C8 !important;
+    border-radius: 18px !important;
+    padding: 14px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    min-height: 86px !important;
+}
+
+.pref-resumo-card strong {
+    color: #0f5f73 !important;
+    display: block !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 4px !important;
+    font-weight: 800 !important;
+}
+
+.pref-resumo-card span {
+    display: block !important;
+    font-size: 1.35rem !important;
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    color: #1a2c3e !important;
+    word-break: break-word !important;
+}
+
+.pref-resumo-card small {
+    display: block !important;
+    margin-top: 6px !important;
+    color: #64748b !important;
+    font-size: 0.75rem !important;
+    line-height: 1.25 !important;
+}
+
+.stats-cards {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 12px !important;
+    margin: 16px 0 22px !important;
+}
+
+.stat-card {
+    background: #ffffff !important;
+    border-radius: 18px !important;
+    padding: 14px !important;
+    border-left: 6px solid #1DA6C8 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    text-align: center !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+.stat-card span {
+    display: block !important;
+    color: #475569 !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+}
+
+.stat-card h4 {
+    color: #1a2c3e !important;
+    font-size: 1.65rem !important;
+    line-height: 1.15 !important;
+    margin: 6px 0 !important;
+    font-weight: 800 !important;
+}
+
+.stat-card small {
+    color: #64748b !important;
+    font-size: 0.75rem !important;
+}
+
+.dashboard-executivo {
+    background: linear-gradient(135deg,#0f5f73 0%,#1DA6C8 100%) !important;
+    color: #ffffff !important;
+    border-radius: 22px !important;
+    padding: 22px !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 4px 14px rgba(15,95,115,0.20) !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+.dashboard-executivo,
+.dashboard-executivo * {
+    color: #ffffff !important;
+}
+
+.indice-principal {
+    text-align: center !important;
+    margin-bottom: 14px !important;
+}
+
+.indice-valor {
+    font-size: 3.3rem !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+}
+
+.indice-classificacao {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    margin-top: 6px !important;
+}
+
+.resumo-executivo-texto {
+    font-size: 0.92rem !important;
+    line-height: 1.45 !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid rgba(255,255,255,0.28) !important;
+}
+
+.analise-tecnica-box {
+    background: #f8fafc !important;
+    border-left: 6px solid #1DA6C8 !important;
+    border-radius: 22px !important;
+    padding: 18px !important;
+    margin: 18px 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+.analise-tecnica-box h3 {
+    color: #0f5f73 !important;
+    font-size: 1.12rem !important;
+    margin: 0 0 12px 0 !important;
+    font-weight: 800 !important;
+}
+
+.grid-leitura-tecnica {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 12px !important;
+    margin: 18px 0 !important;
+}
+
+.card-leitura-aspecto {
+    background: #ffffff !important;
+    border-radius: 18px !important;
+    border: 1px solid #dcecf1 !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+.card-header-aspecto {
+    background: #e8f7fb !important;
+    border-bottom: 1px solid #d2ecf4 !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+}
+
+.card-header-aspecto h4 {
+    color: #0f5f73 !important;
+    font-size: 0.98rem !important;
+    margin: 0 !important;
+    font-weight: 800 !important;
+}
+
+.card-body-aspecto {
+    padding: 14px !important;
+}
+
+.percentual-aspecto {
+    font-size: 1.75rem !important;
+    font-weight: 900 !important;
+    margin-bottom: 8px !important;
+}
+
+.texto-interpretativo {
+    color: #2d3e50 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.38 !important;
+}
+
+.badge-classificacao,
+.badge-count,
+.badge-prioridade,
+.badge-status {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    border-radius: 999px !important;
+    padding: 4px 10px !important;
+    display: inline-block !important;
+}
+
+.gargalo-card {
+    background: #fff5f5 !important;
+    border-left: 5px solid #e53e3e !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    margin-bottom: 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+.gargalo-card .aspecto-nome {
+    color: #7b1e1e !important;
+    font-weight: 800 !important;
+}
+
+.gargalo-card .badge-count {
+    background: #e53e3e !important;
+    color: #ffffff !important;
+}
+
+.potencialidade-card {
+    background: #f0fff4 !important;
+    border-left: 5px solid #38a169 !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    margin-bottom: 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+.potencialidade-card .aspecto-nome {
+    color: #276749 !important;
+    font-weight: 800 !important;
+}
+
+.potencialidade-card .badge-count {
+    background: #38a169 !important;
+    color: #ffffff !important;
+}
+
+.card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.temas {
+    color: #4a5568 !important;
+    font-size: 0.86rem !important;
+    line-height: 1.38 !important;
+}
+
+@media print {
+    @page { size: A4 portrait; margin: 8mm; }
+    body { padding: 0 !important; }
+    .pref-resumo-aspectos { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+    .pref-resumo-card { padding: 10px !important; border-radius: 14px !important; min-height: 72px !important; }
+    .pref-resumo-card strong { font-size: 0.72rem !important; }
+    .pref-resumo-card span { font-size: 1.05rem !important; }
+    .pref-resumo-card small { font-size: 0.66rem !important; }
+    .stats-cards { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 8px !important; }
+    .stat-card { padding: 9px !important; border-radius: 14px !important; }
+    .stat-card h4 { font-size: 1.05rem !important; }
+    .dashboard-executivo { padding: 16px 18px !important; border-radius: 18px !important; }
+    .indice-valor { font-size: 2.55rem !important; }
+    .indice-classificacao { font-size: 1.05rem !important; }
+    .resumo-executivo-texto { font-size: 0.78rem !important; line-height: 1.3 !important; }
+    .grid-leitura-tecnica { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+    .analise-tecnica-box { padding: 12px !important; margin: 10px 0 !important; border-radius: 16px !important; }
+    .card-leitura-aspecto { border-radius: 14px !important; }
+    .card-header-aspecto { padding: 9px 10px !important; }
+    .card-header-aspecto h4 { font-size: 0.82rem !important; }
+    .card-body-aspecto { padding: 10px !important; }
+    .percentual-aspecto { font-size: 1.35rem !important; }
+    .texto-interpretativo { font-size: 0.68rem !important; line-height: 1.25 !important; }
+    .gargalo-card, .potencialidade-card { padding: 9px 10px !important; border-radius: 12px !important; margin-bottom: 7px !important; }
+    .temas { font-size: 0.7rem !important; line-height: 1.25 !important; }
+}
+</style>
+<style>
+/* ====== V14.9 - Correção de legibilidade dos cards "Desempenho por Aspecto" Prefeitura ======
+   Corrige o texto do nível de maturidade no PDF/Impressão, que estava ficando apagado
+   por conflito com a regra geral de small dentro dos cards. */
+.pref-resumo-card .pref-status-aspecto,
+.pref-resumo-card small.pref-status-aspecto,
+.pref-resumo-card small[style*="background"] {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    text-transform: none !important;
+    letter-spacing: 0.15px !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.28) !important;
+    border-radius: 20px !important;
+    padding: 5px 11px !important;
+    margin-top: 8px !important;
+    display: inline-block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+@media print {
+    .pref-resumo-card .pref-status-aspecto,
+    .pref-resumo-card small.pref-status-aspecto,
+    .pref-resumo-card small[style*="background"] {
+        color: #ffffff !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        line-height: 1.12 !important;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.35) !important;
+        padding: 4px 9px !important;
+        margin-top: 7px !important;
+    }
+}
+</style>
+
+
+<style>
+/* ====== V15.0 - Comparativo Prefeitura: card inicial redesenhado para tela e PDF ====== */
+.pref-comp-executivo{
+    background: linear-gradient(135deg,#f8fbfd 0%,#eef8fb 100%);
+    border: 1px solid #d6edf4;
+    border-left: 6px solid #168EAF;
+    border-radius: 26px;
+    padding: 22px;
+    margin: 20px 0 22px;
+    box-shadow: 0 8px 22px rgba(15,95,115,.08);
+}
+.pref-comp-top-grid{
+    display: grid;
+    grid-template-columns: minmax(190px,1fr) 74px minmax(210px,1fr) 74px minmax(190px,1fr);
+    gap: 14px;
+    align-items: stretch;
+}
+.pref-comp-main-card{
+    background: #ffffff;
+    border: 1px solid #dcecf1;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,.045);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.pref-comp-main-card .pref-comp-head{
+    color: #ffffff !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 12px 14px;
+    font-size: .95rem;
+}
+.pref-comp-t0 .pref-comp-head{background:linear-gradient(135deg,#0f5f73,#168EAF);}
+.pref-comp-t1 .pref-comp-head{background:linear-gradient(135deg,#15803d,#22a13f);}
+.pref-comp-evol .pref-comp-head{background:linear-gradient(135deg,#1d4ed8,#168EAF);}
+.pref-comp-body{padding:18px 16px 16px;}
+.pref-comp-percent{
+    font-size: 3rem;
+    line-height: .95;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+.pref-comp-sub{
+    font-size: .92rem;
+    color: #334155;
+    font-weight: 700;
+}
+.pref-comp-bar{
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 14px 0 10px;
+}
+.pref-comp-fill{
+    height: 100%;
+    border-radius: 999px;
+}
+.pref-comp-t0 .pref-comp-fill{background:linear-gradient(90deg,#168EAF,#1DA6C8);}
+.pref-comp-t1 .pref-comp-fill{background:linear-gradient(90deg,#15803d,#22c55e);}
+.pref-comp-status{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.78rem;
+    margin-top:8px;
+}
+.pref-comp-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2.25rem;
+    font-weight:900;
+    color:#168EAF;
+}
+.pref-comp-evol .pref-comp-percent{
+    color:#1d4ed8;
+    font-size:2.65rem;
+}
+.pref-comp-evol-note{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #c7dbe4;
+    color:#475569;
+    font-size:.86rem;
+    line-height:1.35;
+}
+.pref-comp-aspectos-wrap{
+    background:#ffffff;
+    border:1px solid #dcecf1;
+    border-radius:22px;
+    padding:16px;
+    margin-top:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-aspectos-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:#0f5f73;
+    font-weight:900;
+    font-size:1.05rem;
+    margin-bottom:12px;
+}
+.pref-comp-aspectos-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+}
+.pref-comp-aspecto-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-bottom:5px solid var(--cor-aspecto,#168EAF);
+    border-radius:18px;
+    padding:12px 11px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    break-inside:avoid;
+    page-break-inside:avoid;
+}
+.pref-comp-aspecto-nome{
+    font-size:.82rem;
+    font-weight:900;
+    color:#0f172a;
+    min-height:34px;
+    line-height:1.15;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+.pref-comp-aspecto-icone{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--cor-aspecto,#168EAF);
+    color:#ffffff !important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 28px;
+}
+.pref-comp-aspecto-valores{
+    margin-top:10px;
+    font-size:1.15rem;
+    font-weight:900;
+    color:#0f172a;
+}
+.pref-comp-aspecto-valores .seta{color:#64748b;margin:0 5px;}
+.pref-comp-aspecto-valores .t1{color:#15803d;}
+.pref-comp-delta{
+    display:inline-block;
+    margin-top:8px;
+    padding:4px 10px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.72rem;
+    background:var(--cor-delta,#15803d);
+}
+.pref-comp-impacto{
+    background:#eef8fb !important;
+    border-left:6px solid #168EAF !important;
+    border-radius:22px !important;
+    padding:18px 20px !important;
+    margin:18px 0 24px !important;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-impacto h2{
+    color:#0f5f73 !important;
+    margin-bottom:10px !important;
+    font-size:1.22rem !important;
+}
+.pref-comp-impacto p{
+    font-size:.95rem !important;
+    line-height:1.5 !important;
+    color:#1a2c3e !important;
+}
+
+@media (max-width:900px){
+    .pref-comp-top-grid{grid-template-columns:1fr;}
+    .pref-comp-arrow{display:none;}
+}
+
+@media print{
+    .pref-comp-executivo{
+        padding:14px !important;
+        border-radius:20px !important;
+        margin:8px 0 12px !important;
+        box-shadow:none !important;
+    }
+    .pref-comp-top-grid{
+        grid-template-columns:1fr 40px 1fr 40px 1fr !important;
+        gap:8px !important;
+    }
+    .pref-comp-main-card{border-radius:16px !important;box-shadow:none !important;}
+    .pref-comp-main-card .pref-comp-head{
+        padding:8px 10px !important;
+        font-size:.78rem !important;
+        color:#ffffff !important;
+    }
+    .pref-comp-body{padding:10px 9px !important;}
+    .pref-comp-percent{font-size:2.05rem !important;}
+    .pref-comp-evol .pref-comp-percent{font-size:1.9rem !important;}
+    .pref-comp-sub{font-size:.72rem !important;}
+    .pref-comp-bar{height:8px !important;margin:8px 0 6px !important;}
+    .pref-comp-status{font-size:.62rem !important;padding:4px 8px !important;}
+    .pref-comp-arrow{font-size:1.65rem !important;}
+    .pref-comp-evol-note{font-size:.66rem !important;margin-top:6px !important;padding-top:6px !important;}
+    .pref-comp-aspectos-wrap{padding:10px !important;border-radius:16px !important;margin-top:10px !important;box-shadow:none !important;}
+    .pref-comp-aspectos-title{font-size:.86rem !important;margin-bottom:8px !important;}
+    .pref-comp-aspectos-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:6px !important;}
+    .pref-comp-aspecto-card{border-radius:12px !important;padding:8px 7px !important;box-shadow:none !important;}
+    .pref-comp-aspecto-nome{font-size:.62rem !important;min-height:28px !important;}
+    .pref-comp-aspecto-icone{width:21px !important;height:21px !important;flex-basis:21px !important;font-size:.65rem !important;}
+    .pref-comp-aspecto-valores{font-size:.84rem !important;margin-top:6px !important;}
+    .pref-comp-delta{font-size:.58rem !important;padding:3px 7px !important;margin-top:5px !important;}
+    .pref-comp-impacto{padding:10px 12px !important;border-radius:16px !important;margin:10px 0 14px !important;box-shadow:none !important;}
+    .pref-comp-impacto h2{font-size:.95rem !important;margin-bottom:6px !important;}
+    .pref-comp-impacto p{font-size:.75rem !important;line-height:1.32 !important;}
+}
+</style>
+
+
+<style>
+/* ====== V15.1 - Correção do PDF Comparativo Prefeitura: evita truncamento e sobreposição ======
+   Ajuste seguro: remove setas do grid no PDF e redistribui T0, Evolução e T1 em 3 cards iguais. */
+@media print {
+    .pref-comp-executivo{
+        padding: 12px !important;
+        border-radius: 18px !important;
+        margin: 8px 0 12px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-top-grid{
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+
+    .pref-comp-arrow{
+        display: none !important;
+    }
+
+    .pref-comp-main-card{
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .pref-comp-main-card .pref-comp-head{
+        padding: 8px 8px !important;
+        font-size: .76rem !important;
+        line-height: 1.15 !important;
+        letter-spacing: .2px !important;
+        white-space: normal !important;
+        color: #ffffff !important;
+    }
+
+    .pref-comp-body{
+        padding: 10px 9px 11px !important;
+    }
+
+    .pref-comp-percent{
+        font-size: 2rem !important;
+        line-height: .95 !important;
+        margin-bottom: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-evol .pref-comp-percent{
+        font-size: 1.8rem !important;
+        line-height: 1 !important;
+    }
+
+    .pref-comp-sub{
+        font-size: .7rem !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+    }
+
+    .pref-comp-bar{
+        height: 7px !important;
+        margin: 8px 0 6px !important;
+    }
+
+    .pref-comp-status{
+        font-size: .58rem !important;
+        padding: 4px 7px !important;
+        margin-top: 5px !important;
+        line-height: 1.1 !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+
+    .pref-comp-evol-note{
+        font-size: .6rem !important;
+        line-height: 1.2 !important;
+        margin-top: 6px !important;
+        padding-top: 6px !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .pref-comp-aspectos-wrap{
+        padding: 9px !important;
+        border-radius: 15px !important;
+        margin-top: 10px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-aspectos-title{
+        font-size: .82rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 8px !important;
+        gap: 8px !important;
+    }
+
+    .pref-comp-aspectos-grid{
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+    }
+
+    .pref-comp-aspecto-card{
+        min-width: 0 !important;
+        border-radius: 11px !important;
+        padding: 7px 6px !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+    }
+
+    .pref-comp-aspecto-nome{
+        font-size: .56rem !important;
+        line-height: 1.1 !important;
+        min-height: 24px !important;
+        gap: 4px !important;
+        word-break: normal !important;
+    }
+
+    .pref-comp-aspecto-icone{
+        width: 18px !important;
+        height: 18px !important;
+        flex: 0 0 18px !important;
+        font-size: .55rem !important;
+    }
+
+    .pref-comp-aspecto-valores{
+        font-size: .74rem !important;
+        line-height: 1.15 !important;
+        margin-top: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-aspecto-valores .seta{
+        margin: 0 2px !important;
+    }
+
+    .pref-comp-delta{
+        font-size: .52rem !important;
+        padding: 3px 6px !important;
+        margin-top: 4px !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+    }
+}
+</style>
+
+</head>
+            <body>${conteudo}${conteudo.includes('footer-pdf') ? '' : '<div class="footer-pdf"><strong>Pró-Catadores – Diagnóstico Situacional</strong><br>© 2026 Sebrae – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas.<br>Este documento foi gerado automaticamente pelo Sistema Pró-Catadores, com base nas informações registradas no diagnóstico situacional.<br>É proibida a reprodução total ou parcial deste material sem autorização prévia.<br>Todos os direitos reservados.</div>'}</body>
+            </html>
+        `);
+        janelaImpressao.document.close();
+
+        setTimeout(() => {
+            janelaImpressao.focus();
+            janelaImpressao.print();
+        }, 600);
+    }
+
     function imprimirResumo() {
         const resumoCard = document.querySelector("#page-resumo .card");
         if (!resumoCard) {
@@ -2525,7 +4983,12 @@
         botoesImpressao.forEach(botao => botao.remove());
 
         const janelaImpressao = window.open('', '_blank');
+        if (!janelaImpressao) {
+            alert("O navegador bloqueou a janela de impressão. Libere pop-ups para este arquivo/sistema e tente novamente.");
+            return;
+        }
 
+        janelaImpressao.document.open();
         janelaImpressao.document.write(`
             <!DOCTYPE html>
             <html lang="pt-BR">
@@ -2575,9 +5038,9 @@
                     .dashboard-executivo {
                         background: linear-gradient(135deg, #0a3b2f 0%, #1e7b56 100%) !important;
                         color: white !important;
-                        border-radius: 28px;
-                        padding: 28px;
-                        margin-bottom: 18px;
+                        border-radius: 24px;
+                        padding: 20px 22px;
+                        margin-bottom: 12px;
                     }
 
                     .dashboard-executivo * {
@@ -2586,11 +5049,11 @@
 
                     .indice-principal {
                         text-align: center;
-                        margin-bottom: 24px;
+                        margin-bottom: 14px;
                     }
 
                     .indice-valor {
-                        font-size: 4rem;
+                        font-size: 3.2rem;
                         font-weight: 800;
                         line-height: 1;
                     }
@@ -2602,11 +5065,11 @@
                     }
 
                     .resumo-executivo-texto {
-                        font-size: 1rem;
-                        line-height: 1.5;
+                        font-size: 0.95rem;
+                        line-height: 1.42;
                         opacity: 0.95;
-                        margin-top: 16px;
-                        padding-top: 16px;
+                        margin-top: 10px;
+                        padding-top: 10px;
                         border-top: 1px solid rgba(255,255,255,0.2);
                     }
 
@@ -2621,8 +5084,8 @@
 
                     .grid-leitura-tecnica {
                         display: grid;
-                        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-                        gap: 14px;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        gap: 10px;
                         margin-top: 14px;
                         overflow: visible !important;
                     }
@@ -2789,6 +5252,9 @@
                         height: auto;
                     }
 
+                    .footer-sistema { display: none !important; }
+                    .footer-pdf { margin-top:20px; padding-top:10px; border-top:1px solid #CBD5E1; text-align:center; font-size:10.5px; color:#475569; line-height:1.45; break-inside:avoid; page-break-inside:avoid; }
+                    .footer-pdf strong { color:#0f3b2c; }
                     @page {
                         size: A4 portrait;
                         margin: 8mm;
@@ -2852,9 +5318,905 @@
                         }
                     }
                 </style>
-            </head>
+            
+<style>
+/* ====== V14.2 - Ajuste do PDF: cards executivos e distribuição uniforme ====== */
+.resumo-cards-executivos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px;align-items:stretch;}
+.resumo-card-executivo-item{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:18px;padding:13px 15px;min-height:118px;display:flex;flex-direction:column;}
+.resumo-card-executivo-item strong{font-size:.95rem;line-height:1.25;margin-bottom:6px;}
+.resumo-card-executivo-item ul{margin:6px 0 0 18px;line-height:1.45;font-size:.92rem;}
+.pontos-criticos{background:#fff5f5 !important;border-left:4px solid #e53e3e;}
+.pontos-criticos strong{color:#b91c1c !important;}
+.pontos-positivos{background:#e8f5e9 !important;}
+@media print{
+    @page{size:A4 portrait;margin:8mm;}
+    .main-content{padding:0 !important;}
+    .card{padding:14px 16px !important;}
+    .card-title{font-size:1.22rem !important;margin-bottom:12px !important;}
+    .dashboard-executivo{padding:16px 18px !important;border-radius:20px !important;margin-bottom:10px !important;}
+    .indice-valor{font-size:2.75rem !important;}
+    .indice-classificacao{font-size:1.15rem !important;margin-top:4px !important;}
+    .resumo-executivo-texto{font-size:.83rem !important;line-height:1.32 !important;margin-top:8px !important;padding-top:8px !important;}
+    .resumo-cards-executivos{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important;margin-top:10px !important;}
+    .resumo-card-executivo-item{border-radius:14px !important;padding:9px 10px !important;min-height:92px !important;}
+    .resumo-card-executivo-item strong{font-size:.78rem !important;}
+    .resumo-card-executivo-item ul{font-size:.75rem !important;line-height:1.32 !important;margin-left:14px !important;}
+    .analise-tecnica-box{margin:8px 0 0 0 !important;padding:12px !important;border-radius:18px !important;}
+    .analise-tecnica-box h3{font-size:1rem !important;margin-bottom:8px !important;}
+    .grid-leitura-tecnica{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;margin-top:8px !important;}
+    .card-leitura-aspecto{border-radius:14px !important;break-inside:avoid !important;page-break-inside:avoid !important;min-height:0 !important;}
+    .card-header-aspecto{padding:9px 11px !important;gap:6px !important;}
+    .card-header-aspecto h4{font-size:.92rem !important;line-height:1.15 !important;}
+    .badge-classificacao{font-size:.58rem !important;padding:3px 8px !important;}
+    .card-body-aspecto{padding:10px 11px !important;}
+    .percentual-aspecto{font-size:1.55rem !important;margin-bottom:7px !important;}
+    .texto-interpretativo{font-size:.72rem !important;line-height:1.28 !important;margin-bottom:7px !important;padding-bottom:6px !important;}
+    .pontos-atencao,.direcionamento-tecnico{padding:7px 8px !important;border-radius:10px !important;margin-bottom:6px !important;font-size:.7rem !important;}
+    .pontos-atencao strong,.direcionamento-tecnico strong{font-size:.62rem !important;}
+    .pontos-atencao ul{margin-top:5px !important;margin-left:14px !important;}
+    .pontos-atencao li{font-size:.66rem !important;line-height:1.24 !important;}
+    .direcionamento-tecnico p{font-size:.68rem !important;line-height:1.25 !important;margin-top:5px !important;}
+    .matriz-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:8px !important;margin:10px 0 !important;}
+    .matriz-item{padding:10px !important;border-radius:14px !important;}
+    .matriz-numero{font-size:1.55rem !important;}
+    .gargalo-card,.potencialidade-card,.recomendacao-item,.sintese-executiva-card{padding:10px 12px !important;margin-bottom:8px !important;border-radius:12px !important;font-size:.82rem !important;}
+    .footer-pdf{font-size:9px !important;line-height:1.3 !important;margin-top:12px !important;padding-top:8px !important;}
+}
+@media (max-width:900px){.resumo-cards-executivos{grid-template-columns:1fr;}}
+/* ====== V14.3 - Correção de quebra final do PDF ====== */
+.analise-final-pdf{margin-top:14px;padding-top:12px;border-top:1px solid #d9e2ec;text-align:center;font-size:.85rem;color:#64748B;line-height:1.35;break-inside:avoid;page-break-inside:avoid;}
+.footer-pdf-integrado{margin-top:12px !important;padding-top:10px !important;border-top:2px solid #CBD5E1 !important;break-inside:avoid;page-break-inside:avoid;}
+.sintese-final-com-rodape{break-inside:avoid;page-break-inside:avoid;}
+@media print{.resumo-graficos-tela{display:none !important;} .analise-final-pdf{font-size:9.5px !important;margin-top:8px !important;padding-top:8px !important;} .footer-pdf-integrado{font-size:8.5px !important;line-height:1.22 !important;margin-top:8px !important;padding-top:6px !important;}}
+
+</style>
+
+
+<style>
+/* ====== V14.4 - Relatório técnico mais compacto no PDF/Impressão ======
+   Objetivo: eliminar grandes espaços em branco entre assuntos, permitindo fluxo contínuo.
+   Não altera cálculos, dados, perguntas ou metodologia. */
+@media print {
+    /* Relatório Prefeitura: reduzir respiros exagerados entre seções */
+    #page-pref-relatorio .relatorio-tecnico,
+    #page-relatorio .relatorio-tecnico {
+        font-size: 12.2px !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h1,
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h1,
+    #page-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h4 {
+        break-after: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h2,
+    #page-relatorio .relatorio-tecnico h2 {
+        margin-top: 12px !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 4px !important;
+        font-size: 1.18rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h3,
+    #page-relatorio .relatorio-tecnico h3 {
+        margin-top: 10px !important;
+        margin-bottom: 6px !important;
+        font-size: 1.05rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico h4,
+    #page-relatorio .relatorio-tecnico h4 {
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
+        font-size: .92rem !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico p,
+    #page-relatorio .relatorio-tecnico p {
+        margin: 5px 0 7px 0 !important;
+        line-height: 1.32 !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico ul,
+    #page-relatorio .relatorio-tecnico ul {
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+        padding-left: 18px !important;
+    }
+
+    #page-pref-relatorio .relatorio-tecnico li,
+    #page-relatorio .relatorio-tecnico li {
+        margin: 1px 0 3px 0 !important;
+        line-height: 1.26 !important;
+    }
+
+    /* Permite que o conteúdo de um aspecto continue na página seguinte,
+       evitando página anterior quase vazia. */
+    #page-pref-relatorio .pref-analise-aspecto-robusta,
+    #page-relatorio .analise-aspecto-tecnico {
+        margin: 8px 0 10px 0 !important;
+        border-radius: 14px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo {
+        padding: 8px 12px !important;
+        gap: 6px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo h3 {
+        font-size: 1.04rem !important;
+        line-height: 1.12 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-topo strong {
+        font-size: 1.12rem !important;
+    }
+
+    #page-pref-relatorio .pref-prioridade-chip {
+        padding: 2px 8px !important;
+        font-size: .66rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #page-pref-relatorio .pref-analise-aspecto-robusta .pref-aspecto-corpo {
+        padding: 9px 12px 10px 12px !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico {
+        margin: 6px 0 !important;
+        padding: 8px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #page-pref-relatorio .pref-bloco-estrategico h4 {
+        margin: 0 0 4px 0 !important;
+        font-size: .88rem !important;
+    }
+
+    /* Blocos iniciais mais enxutos */
+    #page-pref-relatorio .dashboard-executivo,
+    #page-relatorio .dashboard-executivo {
+        padding: 16px 20px !important;
+        margin-bottom: 12px !important;
+        border-radius: 18px !important;
+    }
+
+    #page-pref-relatorio .info-grid,
+    #page-pref-relatorio .grid-cards,
+    #page-pref-relatorio .stats-cards,
+    #page-relatorio .info-grid,
+    #page-relatorio .grid-cards,
+    #page-relatorio .stats-cards {
+        gap: 8px !important;
+        margin: 8px 0 10px 0 !important;
+    }
+
+    #page-pref-relatorio .result-card,
+    #page-pref-relatorio .stat-card,
+    #page-relatorio .result-card,
+    #page-relatorio .stat-card {
+        padding: 9px 10px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    #page-pref-relatorio .stat-card h4,
+    #page-relatorio .stat-card h4 {
+        font-size: 1.15rem !important;
+        margin: 4px 0 !important;
+    }
+
+    #page-pref-relatorio .resumo-box,
+    #page-relatorio .resumo-box {
+        margin: 8px 0 10px 0 !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    /* Tabelas de plano ocupam menos páginas sem perder leitura */
+    #page-pref-relatorio .plano-table,
+    #page-relatorio .plano-table {
+        font-size: 10.6px !important;
+        line-height: 1.18 !important;
+    }
+
+    #page-pref-relatorio .plano-table th,
+    #page-pref-relatorio .plano-table td,
+    #page-relatorio .plano-table th,
+    #page-relatorio .plano-table td {
+        padding: 5px 6px !important;
+        vertical-align: top !important;
+    }
+
+    /* Evita que o rodapé institucional vire página solta */
+    #page-pref-relatorio .footer-pdf,
+    #page-pref-relatorio .footer-pdf-integrado,
+    #page-relatorio .footer-pdf,
+    #page-relatorio .footer-pdf-integrado {
+        margin-top: 8px !important;
+        padding-top: 7px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Evita áreas finais vazias enormes */
+    #page-pref-relatorio .card,
+    #page-relatorio .card {
+        padding-bottom: 8px !important;
+    }
+}
+
+/* Também melhora a visualização em tela do relatório técnico, sem afetar formulários */
+#page-pref-relatorio .pref-analise-aspecto-robusta,
+#page-relatorio .analise-aspecto-tecnico {
+    margin-bottom: 16px;
+}
+#page-pref-relatorio .pref-bloco-estrategico {
+    margin: 10px 0;
+}
+</style>
+
+
+
+<style>
+/* ====== V14.5 - Correção real do relatório técnico no PDF ======
+   O conteúdo impresso é clonado sem o ID #page-pref-relatorio; por isso,
+   os ajustes agora usam seletores genéricos dentro da janela de impressão. */
+@media print {
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body {
+        font-size: 11.2px !important;
+        line-height: 1.22 !important;
+        color: #1a2c3e !important;
+    }
+
+    .card,
+    .relatorio-tecnico,
+    .pref-analise-integrada,
+    .pref-analise-aspecto-robusta,
+    .pref-bloco-estrategico,
+    .pref-aspecto-corpo,
+    .resumo-box,
+    .sintese-executiva-card,
+    .analise-aspecto-tecnico,
+    .analise-aspecto-body {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: auto !important;
+        page-break-after: auto !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .relatorio-tecnico h1,
+    .relatorio-tecnico h2,
+    .relatorio-tecnico h3,
+    .relatorio-tecnico h4,
+    .pref-analise-integrada h3,
+    .pref-bloco-estrategico h4 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .relatorio-tecnico h1 { font-size: 1.25rem !important; margin: 8px 0 7px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h2 { font-size: 1.08rem !important; margin: 10px 0 6px !important; line-height: 1.14 !important; padding: 0 !important; }
+    .relatorio-tecnico h3 { font-size: .98rem !important; margin: 8px 0 5px !important; line-height: 1.14 !important; }
+    .relatorio-tecnico h4 { font-size: .84rem !important; margin: 5px 0 3px !important; line-height: 1.14 !important; }
+
+    .relatorio-tecnico p,
+    .pref-analise-integrada p,
+    .pref-bloco-estrategico p,
+    .pref-analise-aspecto-robusta p {
+        margin: 3px 0 5px !important;
+        line-height: 1.22 !important;
+        text-align: left !important;
+    }
+
+    .relatorio-tecnico ul,
+    .pref-lista-tecnica {
+        margin: 3px 0 5px 16px !important;
+        padding-left: 12px !important;
+    }
+
+    .relatorio-tecnico li,
+    .pref-lista-tecnica li {
+        margin: 0 0 2px 0 !important;
+        line-height: 1.18 !important;
+    }
+
+    .pref-analise-integrada {
+        margin: 7px 0 8px !important;
+        padding: 9px 11px !important;
+        border-radius: 12px !important;
+    }
+
+    .pref-analise-aspecto-robusta,
+    .analise-aspecto-tecnico {
+        margin: 8px 0 9px !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo,
+    .analise-aspecto-header {
+        padding: 7px 10px !important;
+        gap: 5px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo h3,
+    .analise-aspecto-header h3 {
+        font-size: .96rem !important;
+        line-height: 1.10 !important;
+        margin: 0 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-topo strong,
+    .analise-aspecto-percentual {
+        font-size: 1rem !important;
+        line-height: 1.10 !important;
+    }
+
+    .pref-prioridade-chip,
+    .badge-classificacao {
+        padding: 2px 7px !important;
+        font-size: .62rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .pref-analise-aspecto-robusta .pref-aspecto-corpo,
+    .analise-aspecto-body {
+        padding: 7px 10px 8px !important;
+    }
+
+    .pref-bloco-estrategico,
+    .analise-evidencias,
+    .analise-riscos,
+    .analise-recomendacoes {
+        margin: 5px 0 !important;
+        padding: 7px 9px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .pref-bloco-estrategico h4,
+    .analise-evidencias h4,
+    .analise-riscos h4,
+    .analise-recomendacoes h4 {
+        margin: 0 0 3px !important;
+        font-size: .78rem !important;
+        line-height: 1.12 !important;
+    }
+
+    .info-grid,
+    .grid-cards,
+    .stats-cards,
+    .matriz-grid {
+        gap: 6px !important;
+        margin: 6px 0 7px !important;
+    }
+
+    .result-card,
+    .stat-card,
+    .matriz-item {
+        padding: 7px 8px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .plano-table {
+        font-size: 9.2px !important;
+        line-height: 1.10 !important;
+    }
+    .plano-table th,
+    .plano-table td {
+        padding: 4px 5px !important;
+        vertical-align: top !important;
+    }
+
+    .footer-pdf,
+    .footer-pdf-integrado {
+        margin-top: 7px !important;
+        padding-top: 6px !important;
+        font-size: 8px !important;
+        line-height: 1.15 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    @page { size: A4 portrait; margin: 7mm; }
+}
+</style>
+
+
+<style>
+/* ====== V14.7 - Selos em negrito e contraste reforçado ====== */
+.badge-classificacao {
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    letter-spacing: 0.3px !important;
+    display: inline-block !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Chips de prioridade da Prefeitura */
+.pref-prioridade-chip{
+    display:inline-block !important;
+    padding:5px 13px !important;
+    border-radius:999px !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+    font-size:.75rem !important;
+    letter-spacing:.3px !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15) !important;
+}
+
+/* Garantia de contraste dos níveis de maturidade */
+.badge-critico{
+    background:#b91c1c !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-inicial{
+    background:#d97706 !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidacao{
+    background:#2563eb !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+.badge-consolidado{
+    background:#15803d !important;
+    color:#FFFFFF !important;
+    font-weight:800 !important;
+}
+
+/* Reforço específico para impressão/PDF */
+@media print {
+    .badge-classificacao {
+        padding: 5px 12px !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        color: #FFFFFF !important;
+        letter-spacing: 0.25px !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .pref-prioridade-chip{
+        padding:4px 11px !important;
+        font-size:.68rem !important;
+        font-weight:800 !important;
+        color:#FFFFFF !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+
+
+<style>
+/* ====== V15.0 - Comparativo Prefeitura: card inicial redesenhado para tela e PDF ====== */
+.pref-comp-executivo{
+    background: linear-gradient(135deg,#f8fbfd 0%,#eef8fb 100%);
+    border: 1px solid #d6edf4;
+    border-left: 6px solid #168EAF;
+    border-radius: 26px;
+    padding: 22px;
+    margin: 20px 0 22px;
+    box-shadow: 0 8px 22px rgba(15,95,115,.08);
+}
+.pref-comp-top-grid{
+    display: grid;
+    grid-template-columns: minmax(190px,1fr) 74px minmax(210px,1fr) 74px minmax(190px,1fr);
+    gap: 14px;
+    align-items: stretch;
+}
+.pref-comp-main-card{
+    background: #ffffff;
+    border: 1px solid #dcecf1;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,.045);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.pref-comp-main-card .pref-comp-head{
+    color: #ffffff !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 12px 14px;
+    font-size: .95rem;
+}
+.pref-comp-t0 .pref-comp-head{background:linear-gradient(135deg,#0f5f73,#168EAF);}
+.pref-comp-t1 .pref-comp-head{background:linear-gradient(135deg,#15803d,#22a13f);}
+.pref-comp-evol .pref-comp-head{background:linear-gradient(135deg,#1d4ed8,#168EAF);}
+.pref-comp-body{padding:18px 16px 16px;}
+.pref-comp-percent{
+    font-size: 3rem;
+    line-height: .95;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+.pref-comp-sub{
+    font-size: .92rem;
+    color: #334155;
+    font-weight: 700;
+}
+.pref-comp-bar{
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 14px 0 10px;
+}
+.pref-comp-fill{
+    height: 100%;
+    border-radius: 999px;
+}
+.pref-comp-t0 .pref-comp-fill{background:linear-gradient(90deg,#168EAF,#1DA6C8);}
+.pref-comp-t1 .pref-comp-fill{background:linear-gradient(90deg,#15803d,#22c55e);}
+.pref-comp-status{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.78rem;
+    margin-top:8px;
+}
+.pref-comp-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2.25rem;
+    font-weight:900;
+    color:#168EAF;
+}
+.pref-comp-evol .pref-comp-percent{
+    color:#1d4ed8;
+    font-size:2.65rem;
+}
+.pref-comp-evol-note{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #c7dbe4;
+    color:#475569;
+    font-size:.86rem;
+    line-height:1.35;
+}
+.pref-comp-aspectos-wrap{
+    background:#ffffff;
+    border:1px solid #dcecf1;
+    border-radius:22px;
+    padding:16px;
+    margin-top:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-aspectos-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:#0f5f73;
+    font-weight:900;
+    font-size:1.05rem;
+    margin-bottom:12px;
+}
+.pref-comp-aspectos-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+}
+.pref-comp-aspecto-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-bottom:5px solid var(--cor-aspecto,#168EAF);
+    border-radius:18px;
+    padding:12px 11px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    break-inside:avoid;
+    page-break-inside:avoid;
+}
+.pref-comp-aspecto-nome{
+    font-size:.82rem;
+    font-weight:900;
+    color:#0f172a;
+    min-height:34px;
+    line-height:1.15;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+.pref-comp-aspecto-icone{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--cor-aspecto,#168EAF);
+    color:#ffffff !important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 28px;
+}
+.pref-comp-aspecto-valores{
+    margin-top:10px;
+    font-size:1.15rem;
+    font-weight:900;
+    color:#0f172a;
+}
+.pref-comp-aspecto-valores .seta{color:#64748b;margin:0 5px;}
+.pref-comp-aspecto-valores .t1{color:#15803d;}
+.pref-comp-delta{
+    display:inline-block;
+    margin-top:8px;
+    padding:4px 10px;
+    border-radius:999px;
+    color:#ffffff !important;
+    font-weight:900;
+    font-size:.72rem;
+    background:var(--cor-delta,#15803d);
+}
+.pref-comp-impacto{
+    background:#eef8fb !important;
+    border-left:6px solid #168EAF !important;
+    border-radius:22px !important;
+    padding:18px 20px !important;
+    margin:18px 0 24px !important;
+    box-shadow:0 2px 8px rgba(0,0,0,.035);
+}
+.pref-comp-impacto h2{
+    color:#0f5f73 !important;
+    margin-bottom:10px !important;
+    font-size:1.22rem !important;
+}
+.pref-comp-impacto p{
+    font-size:.95rem !important;
+    line-height:1.5 !important;
+    color:#1a2c3e !important;
+}
+
+@media (max-width:900px){
+    .pref-comp-top-grid{grid-template-columns:1fr;}
+    .pref-comp-arrow{display:none;}
+}
+
+@media print{
+    .pref-comp-executivo{
+        padding:14px !important;
+        border-radius:20px !important;
+        margin:8px 0 12px !important;
+        box-shadow:none !important;
+    }
+    .pref-comp-top-grid{
+        grid-template-columns:1fr 40px 1fr 40px 1fr !important;
+        gap:8px !important;
+    }
+    .pref-comp-main-card{border-radius:16px !important;box-shadow:none !important;}
+    .pref-comp-main-card .pref-comp-head{
+        padding:8px 10px !important;
+        font-size:.78rem !important;
+        color:#ffffff !important;
+    }
+    .pref-comp-body{padding:10px 9px !important;}
+    .pref-comp-percent{font-size:2.05rem !important;}
+    .pref-comp-evol .pref-comp-percent{font-size:1.9rem !important;}
+    .pref-comp-sub{font-size:.72rem !important;}
+    .pref-comp-bar{height:8px !important;margin:8px 0 6px !important;}
+    .pref-comp-status{font-size:.62rem !important;padding:4px 8px !important;}
+    .pref-comp-arrow{font-size:1.65rem !important;}
+    .pref-comp-evol-note{font-size:.66rem !important;margin-top:6px !important;padding-top:6px !important;}
+    .pref-comp-aspectos-wrap{padding:10px !important;border-radius:16px !important;margin-top:10px !important;box-shadow:none !important;}
+    .pref-comp-aspectos-title{font-size:.86rem !important;margin-bottom:8px !important;}
+    .pref-comp-aspectos-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:6px !important;}
+    .pref-comp-aspecto-card{border-radius:12px !important;padding:8px 7px !important;box-shadow:none !important;}
+    .pref-comp-aspecto-nome{font-size:.62rem !important;min-height:28px !important;}
+    .pref-comp-aspecto-icone{width:21px !important;height:21px !important;flex-basis:21px !important;font-size:.65rem !important;}
+    .pref-comp-aspecto-valores{font-size:.84rem !important;margin-top:6px !important;}
+    .pref-comp-delta{font-size:.58rem !important;padding:3px 7px !important;margin-top:5px !important;}
+    .pref-comp-impacto{padding:10px 12px !important;border-radius:16px !important;margin:10px 0 14px !important;box-shadow:none !important;}
+    .pref-comp-impacto h2{font-size:.95rem !important;margin-bottom:6px !important;}
+    .pref-comp-impacto p{font-size:.75rem !important;line-height:1.32 !important;}
+}
+</style>
+
+
+<style>
+/* ====== V15.1 - Correção do PDF Comparativo Prefeitura: evita truncamento e sobreposição ======
+   Ajuste seguro: remove setas do grid no PDF e redistribui T0, Evolução e T1 em 3 cards iguais. */
+@media print {
+    .pref-comp-executivo{
+        padding: 12px !important;
+        border-radius: 18px !important;
+        margin: 8px 0 12px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-top-grid{
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+
+    .pref-comp-arrow{
+        display: none !important;
+    }
+
+    .pref-comp-main-card{
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .pref-comp-main-card .pref-comp-head{
+        padding: 8px 8px !important;
+        font-size: .76rem !important;
+        line-height: 1.15 !important;
+        letter-spacing: .2px !important;
+        white-space: normal !important;
+        color: #ffffff !important;
+    }
+
+    .pref-comp-body{
+        padding: 10px 9px 11px !important;
+    }
+
+    .pref-comp-percent{
+        font-size: 2rem !important;
+        line-height: .95 !important;
+        margin-bottom: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-evol .pref-comp-percent{
+        font-size: 1.8rem !important;
+        line-height: 1 !important;
+    }
+
+    .pref-comp-sub{
+        font-size: .7rem !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+    }
+
+    .pref-comp-bar{
+        height: 7px !important;
+        margin: 8px 0 6px !important;
+    }
+
+    .pref-comp-status{
+        font-size: .58rem !important;
+        padding: 4px 7px !important;
+        margin-top: 5px !important;
+        line-height: 1.1 !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+
+    .pref-comp-evol-note{
+        font-size: .6rem !important;
+        line-height: 1.2 !important;
+        margin-top: 6px !important;
+        padding-top: 6px !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .pref-comp-aspectos-wrap{
+        padding: 9px !important;
+        border-radius: 15px !important;
+        margin-top: 10px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .pref-comp-aspectos-title{
+        font-size: .82rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 8px !important;
+        gap: 8px !important;
+    }
+
+    .pref-comp-aspectos-grid{
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+    }
+
+    .pref-comp-aspecto-card{
+        min-width: 0 !important;
+        border-radius: 11px !important;
+        padding: 7px 6px !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+    }
+
+    .pref-comp-aspecto-nome{
+        font-size: .56rem !important;
+        line-height: 1.1 !important;
+        min-height: 24px !important;
+        gap: 4px !important;
+        word-break: normal !important;
+    }
+
+    .pref-comp-aspecto-icone{
+        width: 18px !important;
+        height: 18px !important;
+        flex: 0 0 18px !important;
+        font-size: .55rem !important;
+    }
+
+    .pref-comp-aspecto-valores{
+        font-size: .74rem !important;
+        line-height: 1.15 !important;
+        margin-top: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .pref-comp-aspecto-valores .seta{
+        margin: 0 2px !important;
+    }
+
+    .pref-comp-delta{
+        font-size: .52rem !important;
+        padding: 3px 6px !important;
+        margin-top: 4px !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+    }
+}
+</style>
+
+</head>
             <body>
-                ${cardClone.outerHTML}
+                ${cardClone.outerHTML}${cardClone.querySelector('.footer-pdf') ? '' : '<div class="footer-pdf"><strong>Pró-Catadores – Diagnóstico Situacional</strong><br>© 2026 Sebrae – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas.<br>Este documento foi gerado automaticamente pelo Sistema Pró-Catadores, com base nas informações registradas no diagnóstico situacional.<br>É proibida a reprodução total ou parcial deste material sem autorização prévia.<br>Todos os direitos reservados.</div>'}
             </body>
             </html>
         `);
@@ -2930,7 +6292,7 @@
         if(plano.length > 15) {
             html += `<tr><td colspan="10" style="text-align: center; font-style: italic;">+ ${plano.length - 15} outras ações disponíveis no sistema</td></tr>`;
         }
-        html += `</tbody></table></div><p style="margin-top:24px; font-size:12px; color:#777;">Relatório técnico gerado em ${new Date().toLocaleString('pt-BR')} pelo Sistema Pró-Catadores.</p></div>`;
+        html += `</tbody></table></div><p style="margin-top:24px; font-size:12px; color:#777;">Relatório técnico gerado em ${new Date().toLocaleString('pt-BR')} pelo Sistema Pró-Catadores.</p><div class="footer-pdf"><strong>Pró-Catadores – Diagnóstico Situacional</strong><br>© 2026 Sebrae – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas.<br>Este documento foi gerado automaticamente pelo Sistema Pró-Catadores, com base nas informações registradas no diagnóstico situacional.<br>É proibida a reprodução total ou parcial deste material sem autorização prévia.<br>Todos os direitos reservados.</div></div>`;
         return html;
     }
     
@@ -3360,6 +6722,184 @@
     function atualizarDisplayTipos() { let tipo = getTipoAtual(); ["tipoDisplay", "resumoTipoDisplay", "planTipoDisplay", "relatorioTipoDisplay"].forEach(id => { let el = document.getElementById(id); if(el) el.innerText = tipo; }); }
     function recarregarPorTipo() { renderizarDiagnostico(); renderizarPlanoEditavel(); atualizarDisplayTipos(); if(document.getElementById("page-resumo").classList.contains("active-page")) renderizarResumoEGraficos(); if(document.getElementById("page-relatorio").classList.contains("active-page")) exibirRelatorio(); if(document.getElementById("page-comparativo").classList.contains("active-page")) renderizarComparativoT0T1(); }
     
+
+    /* ====== V15.6 - Base de Teste Completa T0 e T1 ====== */
+    function gerarRespostasTesteCooperativa(tipo) {
+        const respostas = {};
+        const contadorAspecto = {};
+        perguntas.forEach((p, idx) => {
+            contadorAspecto[p.aspecto] = (contadorAspecto[p.aspecto] || 0) + 1;
+            const pos = contadorAspecto[p.aspecto];
+            if (tipo === "T0") {
+                respostas[p.id] = (pos % 5 === 0) ? "sim" : ((pos % 2 === 0) ? "parcial" : "nao");
+            } else {
+                respostas[p.id] = (pos % 6 === 0) ? "nao" : ((pos % 3 === 0) ? "parcial" : "sim");
+            }
+        });
+        return respostas;
+    }
+
+    function gerarRespostasTestePrefeitura(tipo) {
+        const respostas = {};
+        const contadorAspecto = {};
+        perguntasPrefeitura.forEach((p, idx) => {
+            contadorAspecto[p.aspectoCodigo] = (contadorAspecto[p.aspectoCodigo] || 0) + 1;
+            const pos = contadorAspecto[p.aspectoCodigo];
+            const resposta = tipo === "T0"
+                ? ((pos % 5 === 0) ? "sim" : ((pos % 2 === 0) ? "parcial" : "nao"))
+                : ((pos % 6 === 0) ? "nao" : ((pos % 3 === 0) ? "parcial" : "sim"));
+            const pontuacao = calcularPontuacaoPrefeitura(p, resposta);
+            respostas[p.codigo] = {
+                codigo: p.codigo,
+                aspecto: p.aspecto,
+                aspectoCodigo: p.aspectoCodigo,
+                pergunta: p.pergunta,
+                resposta: resposta,
+                pontuacaoObtida: pontuacao,
+                pontuacaoMaxima: resposta === "na" ? 0 : p.peso,
+                informativa: !!p.informativa,
+                observacaoConsultor: tipo === "T0" ? "Base de teste: situação inicial para demonstração." : "Base de teste: evidência de evolução após ações do ciclo."
+            };
+        });
+        return respostas;
+    }
+
+    function aplicarStatusTestePlanoCooperativa(plano, tipo) {
+        return (plano || []).map((item, idx) => ({
+            ...item,
+            responsavel: item.responsavel || (tipo === "T0" ? "Diretoria da Cooperativa" : "Diretoria / Consultor"),
+            prazo: item.prazo || (idx % 3 === 0 ? "30 dias" : idx % 3 === 1 ? "60 dias" : "90 dias"),
+            status: tipo === "T0" ? (idx % 3 === 0 ? "Pendente" : "Em execução") : (idx % 4 === 0 ? "Realizado" : "Em execução"),
+            observacaoTecnica: item.observacaoTecnica || (tipo === "T0" ? "Ação gerada automaticamente para teste do plano." : "Ação de teste com evolução para validação do relatório.")
+        }));
+    }
+
+    function aplicarStatusTestePlanoPrefeitura(plano, tipo) {
+        return (plano || []).map((item, idx) => ({
+            ...item,
+            responsavel: item.responsavel || "Prefeitura / Secretaria Responsável",
+            prazo: item.prazo || (idx % 3 === 0 ? "30 dias" : idx % 3 === 1 ? "60 dias" : "90 dias"),
+            status: tipo === "T0" ? (idx % 3 === 0 ? "Pendente" : "Em execução") : (idx % 4 === 0 ? "Realizado" : "Em execução"),
+            observacao: item.observacao || (tipo === "T0" ? "Ação gerada automaticamente para teste do plano municipal." : "Ação de teste com evolução para validação do comparativo municipal.")
+        }));
+    }
+
+    function carregarBaseTesteCompleta() {
+        const confirmar = confirm(
+            "Carregar base de teste completa?\n\n" +
+            "Essa ação substituirá os dados atuais salvos no navegador por dados fictícios de demonstração, incluindo:\n" +
+            "• Cadastro da Cooperativa\n" +
+            "• Diagnóstico Cooperativa T0 e T1\n" +
+            "• Cadastro da Prefeitura\n" +
+            "• Diagnóstico Prefeitura T0 e T1\n" +
+            "• Planos de ação e soluções de teste\n\n" +
+            "Use apenas para apresentação e validação do sistema."
+        );
+        if (!confirmar) return;
+
+        const hoje = new Date().toISOString().slice(0, 10);
+        dadosCooperativa = enriquecerEstadoCooperativa({
+            nomeOrg: "Cooperativa Recicla Vale - TESTE",
+            cnpj: "12.345.678/0001-90",
+            endereco: "Rua da Reciclagem, 100 - Galpão Central",
+            municipio: "Jequié",
+            estado: "BA",
+            repLegal: "Maria dos Santos",
+            respDiagnostico: "Consultor de Teste",
+            dataAvaliacao: hoje,
+            tipoDiagnostico: "T0",
+            qtdMembros: 28,
+            qtdHomens: 11,
+            qtdMulheres: 17,
+            qtdOutros: 0,
+            racaBranca: 3,
+            racaNegra: 9,
+            racaParda: 16,
+            racaIndigena: 0,
+            racaOutras: 0,
+            qtdPcd: 1,
+            toneladasMedia: 32.5,
+            faturamentoMedio: 48750,
+            observacoesGeral: "Base fictícia para demonstração dos módulos T0 e T1 da Cooperativa."
+        });
+
+        respostas_T0 = gerarRespostasTesteCooperativa("T0");
+        respostas_T1 = gerarRespostasTesteCooperativa("T1");
+        observacoesTecnicas_T0 = {};
+        observacoesTecnicas_T1 = {};
+        perguntas.forEach(p => {
+            observacoesTecnicas_T0[p.id] = "Base de teste T0: ponto inicial para avaliação.";
+            observacoesTecnicas_T1[p.id] = "Base de teste T1: evolução simulada para validação do sistema.";
+        });
+
+        solucoes = [
+            { id: 101, etapa:"T0", areaTematica:"Gestão", subarea:"Organização administrativa", nomeSolucao:"Consultoria de Gestão da Cooperativa", tipoSolucao:"Consultoria", cargaHoraria:"12", tempoExecucao:"30 dias", valorEstimado:2500, observacoes:"Solução fictícia para teste." },
+            { id: 102, etapa:"T0", areaTematica:"Produção", subarea:"Triagem e segurança", nomeSolucao:"Oficina de Produção Segura", tipoSolucao:"Oficina", cargaHoraria:"8", tempoExecucao:"15 dias", valorEstimado:1200, observacoes:"Solução fictícia para teste." },
+            { id: 103, etapa:"T1", areaTematica:"Comercialização", subarea:"Negociação e mercado", nomeSolucao:"Mentoria de Comercialização", tipoSolucao:"Mentoria", cargaHoraria:"10", tempoExecucao:"45 dias", valorEstimado:1800, observacoes:"Solução fictícia para teste." }
+        ];
+
+        dadosCooperativa.tipoDiagnostico = "T0";
+        gerarPlanoBase();
+        plano_T0 = aplicarStatusTestePlanoCooperativa(plano_T0, "T0");
+        dadosCooperativa.tipoDiagnostico = "T1";
+        gerarPlanoBase();
+        plano_T1 = aplicarStatusTestePlanoCooperativa(plano_T1, "T1");
+        dadosCooperativa.tipoDiagnostico = "T0";
+        salvarTudoLS();
+        preencherCadastroForm();
+
+        const cadastroPrefeituraTeste = {
+            municipio: "Jequié",
+            estado: "BA",
+            secretariaResponsavel: "Secretaria Municipal de Meio Ambiente - TESTE",
+            secretarioResponsavel: "João Pereira",
+            habitantes: 158000,
+            residuosGeradosTonDia: 118,
+            residuosRecuperadosTonDia: 14.5,
+            irrPercentual: 12.29,
+            responsavelDiagnostico: "Consultor de Teste",
+            cargoFuncao: "Consultor Técnico",
+            dataAvaliacao: hoje,
+            tipoDiagnostico: "T0",
+            observacoesGerais: "Base fictícia para demonstração dos módulos T0 e T1 da Prefeitura."
+        };
+        localStorage.setItem(PREF_CADASTRO_LS_KEY, JSON.stringify(cadastroPrefeituraTeste));
+        preencherCadastroPrefeitura(cadastroPrefeituraTeste);
+
+        const prefRespT0 = gerarRespostasTestePrefeitura("T0");
+        const prefRespT1 = gerarRespostasTestePrefeitura("T1");
+        localStorage.setItem(PREF_DIAG_LS_T0, JSON.stringify(prefRespT0));
+        localStorage.setItem(PREF_DIAG_LS_T1, JSON.stringify(prefRespT1));
+
+        if (document.getElementById("prefTipoDiagnostico")) document.getElementById("prefTipoDiagnostico").value = "T0";
+        let prefPlanoT0 = gerarPlanoBasePrefeitura();
+        salvarPlanoPrefeituraLS("T0", aplicarStatusTestePlanoPrefeitura(prefPlanoT0, "T0"));
+        if (document.getElementById("prefTipoDiagnostico")) document.getElementById("prefTipoDiagnostico").value = "T1";
+        let prefPlanoT1 = gerarPlanoBasePrefeitura();
+        salvarPlanoPrefeituraLS("T1", aplicarStatusTestePlanoPrefeitura(prefPlanoT1, "T1"));
+        if (document.getElementById("prefTipoDiagnostico")) document.getElementById("prefTipoDiagnostico").value = "T0";
+
+        localStorage.setItem(getPrefSolucoesKey(), JSON.stringify([
+            { id:201, etapa:"T0", areaTematica:"Gestão Municipal", subarea:"PMGIRS", nomeSolucao:"Consultoria de Estruturação do PMGIRS", tipoSolucao:"Consultoria", cargaHoraria:"16", tempoExecucao:"45 dias", valorEstimado:3500, observacoes:"Solução fictícia para teste." },
+            { id:202, etapa:"T0", areaTematica:"Coleta Seletiva", subarea:"Mobilização", nomeSolucao:"Oficina de Coleta Seletiva Municipal", tipoSolucao:"Oficina", cargaHoraria:"8", tempoExecucao:"20 dias", valorEstimado:1500, observacoes:"Solução fictícia para teste." },
+            { id:203, etapa:"T1", areaTematica:"Relacionamento", subarea:"Parcerias", nomeSolucao:"Mentoria de Articulação com Cooperativas", tipoSolucao:"Mentoria", cargaHoraria:"10", tempoExecucao:"30 dias", valorEstimado:1800, observacoes:"Solução fictícia para teste." }
+        ]));
+
+        try { renderizarDiagnostico(); } catch(e) {}
+        try { renderizarPlanoEditavel(); } catch(e) {}
+        try { renderizarSolucoes(); } catch(e) {}
+        try { renderizarResumoEGraficos(); } catch(e) {}
+        try { renderizarComparativoT0T1(); } catch(e) {}
+        try { renderizarDiagnosticoPrefeitura(); } catch(e) {}
+        try { renderizarResumoPrefeitura(); } catch(e) {}
+        try { renderizarPlanoPrefeitura(); } catch(e) {}
+        try { renderizarSolucoesPrefeitura(); } catch(e) {}
+        try { renderizarComparativoPrefeitura(); } catch(e) {}
+        try { atualizarStatusBackupTerritorial(); } catch(e) {}
+
+        alert("Base de teste carregada com sucesso. Agora é possível navegar pelos módulos da Cooperativa e da Prefeitura para avaliar T0, T1, Resumo, Plano, Comparativo e Relatórios.");
+    }
+
     function bindEvents() {
         document.querySelectorAll(".nav-item").forEach(item => { item.addEventListener("click", () => { let pageId = item.getAttribute("data-page"); document.querySelectorAll(".page").forEach(p => p.classList.remove("active-page")); document.getElementById(`page-${pageId}`).classList.add("active-page"); document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active")); item.classList.add("active"); if(pageId === "resumo") renderizarResumoEGraficos(); if(pageId === "plano") renderizarPlanoEditavel(); if(pageId === "relatorio") exibirRelatorio(); if(pageId === "diagnostico") renderizarDiagnostico(); if(pageId === "comparativo") renderizarComparativoT0T1(); if(pageId === "solucoes") renderizarSolucoes(); if(pageId === "backup") atualizarStatusBackupTerritorial(); }); });
         document.getElementById("salvarCadastroExpandidoBtn")?.addEventListener("click", () => { let novoTipo = document.getElementById("tipoDiagnostico").value; let tipoAntigo = dadosCooperativa.tipoDiagnostico; dadosCooperativa = coletarFormCadastro(); salvarTudoLS(); if(tipoAntigo !== novoTipo) recarregarPorTipo(); alert("Cadastro salvo!"); });
@@ -3373,10 +6913,13 @@
         document.getElementById("exportPrefT1Btn")?.addEventListener("click", () => exportarBackupPrefeitura("T1"));
         document.getElementById("exportPrefCompletaBtn")?.addEventListener("click", () => exportarBackupPrefeitura("COMPLETA"));
         document.getElementById("exportTerritorialBtn")?.addEventListener("click", exportarBackupTerritorialV2);
+        document.getElementById("carregarBaseTesteBtn")?.addEventListener("click", carregarBaseTesteCompleta);
         document.getElementById("importFileBtn")?.addEventListener("click", () => document.getElementById("importFileInput").click());
         document.getElementById("importFileInput")?.addEventListener("change", e => { let file = e.target.files[0]; if(file) { let reader = new FileReader(); reader.onload = ev => importarBackup(ev.target.result); reader.readAsText(file); } });
         document.getElementById("limparStorageBtn")?.addEventListener("click", () => { if(confirm("Limpar dados? Isso apagará T0 e T1!")) { localStorage.clear(); respostas_T0 = {}; respostas_T1 = {}; plano_T0 = []; plano_T1 = []; observacoesTecnicas_T0 = {}; observacoesTecnicas_T1 = {}; solucoes = []; dadosCooperativa = {nomeOrg: "", cnpj: "", endereco: "", municipio: "", estado: "", estadoNome: "", regiaoBrasil: "", repLegal: "", respDiagnostico: "", dataAvaliacao: "", tipoDiagnostico: "T0", qtdMembros: 0, qtdHomens: 0, qtdMulheres: 0, qtdOutros: 0, racaBranca: 0, racaNegra: 0, racaParda: 0, racaIndigena: 0, racaOutras: 0, qtdPcd: 0, toneladasMedia: 0, faturamentoMedio: 0, observacoesGeral: ""}; preencherCadastroForm(); renderizarDiagnostico(); renderizarPlanoEditavel(); renderizarSolucoes(); if(document.getElementById("page-comparativo").classList.contains("active-page")) renderizarComparativoT0T1(); alert("Dados limpos"); } });
-        document.getElementById("imprimirBtn")?.addEventListener("click", () => { let conteudo = document.getElementById("relatorioContent").innerHTML; let win = window.open("", "_blank"); win.document.write(`<html><head><title>Relatório Diagnóstico ${getTipoAtual()}</title><style>body{font-family:sans-serif;padding:20px} table{border-collapse:collapse;width:100%} th,td{border:1px solid #ccc;padding:8px} .analise-aspecto-tecnico{background:#f9fafb;margin-bottom:30px;padding:20px;border-radius:16px} .analise-aspecto-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px} .analise-aspecto-percentual{font-size:1.5rem;font-weight:bold;color:#1e7b56} .analise-evidencias,.analise-riscos,.analise-recomendacoes{margin:16px 0;padding:12px;border-radius:12px} .analise-evidencias{background:#e8f5e9} .analise-riscos{background:#fff3e0} .analise-recomendacoes{background:#e3f2fd} @media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>${conteudo}</body></html>`); win.document.close(); win.print(); });
+        document.getElementById("imprimirBtn")?.addEventListener("click", () => {
+            imprimirConteudoSeguro("#page-relatorio .card", `Relatório Diagnóstico ${getTipoAtual()}`, "#1e7b56");
+        });
         document.getElementById("tipoDiagnostico")?.addEventListener("change", () => { let novoTipo = document.getElementById("tipoDiagnostico").value; dadosCooperativa.tipoDiagnostico = novoTipo; salvarTudoLS(); recarregarPorTipo(); });
         document.getElementById("closeModalBtn")?.addEventListener("click", fecharModal);
         document.getElementById("modalOverlay")?.addEventListener("click", fecharModal);
@@ -4606,15 +8149,77 @@
                 <p>Embora estáveis, estes aspectos podem se beneficiar de ações específicas para avançar a patamares mais elevados.</p>
             </div>` : "";
 
+        const coresAspectosPrefeituraComparativo = ["#2563eb", "#16a34a", "#f97316", "#dc2626", "#7c3aed"];
+        const iconesAspectosPrefeituraComparativo = ["fa-scale-balanced", "fa-gear", "fa-building", "fa-recycle", "fa-users"];
+        const aspectosCardsComparativoPref = linhas.map((l, idx) => {
+            const corAspecto = coresAspectosPrefeituraComparativo[idx % coresAspectosPrefeituraComparativo.length];
+            const corDelta = temT1 ? corEvolucaoPrefeitura(l.delta) : "#64748b";
+            return `
+                <div class="pref-comp-aspecto-card" style="--cor-aspecto:${corAspecto}; --cor-delta:${corDelta};">
+                    <div class="pref-comp-aspecto-nome">
+                        <span class="pref-comp-aspecto-icone"><i class="fas ${iconesAspectosPrefeituraComparativo[idx % iconesAspectosPrefeituraComparativo.length]}"></i></span>
+                        <span>${escapeHTMLPref(l.aspecto)}</span>
+                    </div>
+                    <div class="pref-comp-aspecto-valores">
+                        <span>${l.t0}%</span>
+                        <span class="seta">→</span>
+                        <span class="t1">${temT1 ? `${l.t1}%` : "—"}</span>
+                    </div>
+                    <span class="pref-comp-delta">${temT1 ? montarSinalPrefeitura(l.delta) : "Aguardando T1"}</span>
+                </div>`;
+        }).join("");
+
+        const larguraT0PrefComp = Math.max(0, Math.min(100, Number(t0.percentual || 0)));
+        const larguraT1PrefComp = Math.max(0, Math.min(100, Number(temT1 ? t1.percentual : 0)));
+
         container.innerHTML = `
-            <div class="comparativo-executivo-card" style="background:linear-gradient(135deg,#0f5f73 0%,#1DA6C8 100%);">
-                <div class="indice"><div class="label">Diagnóstico T0</div><div class="valor">${t0.percentual}%</div><div>${temT0 ? "Baseline" : "Não realizado"}</div></div>
-                <div class="evolucao"><div class="label">Evolução Geral</div><div class="valor" style="color:${corStatus}; background:rgba(255,255,255,0.92); border-radius:20px; padding:8px 18px; display:inline-block;">${temT1 ? montarSinalPrefeitura(deltaGeral) : "—"}</div><div>${escapeHTMLPref(status)}</div></div>
-                <div class="indice"><div class="label">Diagnóstico T1</div><div class="valor">${temT1 ? `${t1.percentual}%` : "0%"}</div><div>${temT1 ? "Situação Atual" : "Não realizado"}</div></div>
-                <div class="status"><div class="label">Status Geral</div><span class="badge-status" style="background:${corStatus};">${escapeHTMLPref(status)}</span></div>
+            <div class="pref-comp-executivo">
+                <div class="pref-comp-top-grid">
+                    <div class="pref-comp-main-card pref-comp-t0">
+                        <div class="pref-comp-head">Diagnóstico T0</div>
+                        <div class="pref-comp-body">
+                            <div class="pref-comp-percent">${t0.percentual}%</div>
+                            <div class="pref-comp-sub">${temT0 ? "Baseline" : "Não realizado"}</div>
+                            <div class="pref-comp-bar"><div class="pref-comp-fill" style="width:${larguraT0PrefComp}%;"></div></div>
+                            <span class="pref-comp-status" style="background:#168EAF;">Evolução Geral</span>
+                        </div>
+                    </div>
+
+                    <div class="pref-comp-arrow"><i class="fas fa-angles-right"></i></div>
+
+                    <div class="pref-comp-main-card pref-comp-evol">
+                        <div class="pref-comp-head">Evolução</div>
+                        <div class="pref-comp-body">
+                            <div class="pref-comp-percent">${temT1 ? montarSinalPrefeitura(deltaGeral) : "—"}</div>
+                            <div class="pref-comp-sub"><span class="pref-comp-status" style="background:${corStatus};">${escapeHTMLPref(status)}</span></div>
+                            <div class="pref-comp-evol-note">${temT1 ? `Crescimento de ${Math.abs(deltaGeral)} pontos percentuais entre T0 e T1.` : "Preencha o diagnóstico T1 para gerar a evolução."}</div>
+                        </div>
+                    </div>
+
+                    <div class="pref-comp-arrow" style="color:${temT1 ? '#15803d' : '#94a3b8'};"><i class="fas fa-angles-right"></i></div>
+
+                    <div class="pref-comp-main-card pref-comp-t1">
+                        <div class="pref-comp-head">Diagnóstico T1</div>
+                        <div class="pref-comp-body">
+                            <div class="pref-comp-percent">${temT1 ? `${t1.percentual}%` : "0%"}</div>
+                            <div class="pref-comp-sub">${temT1 ? "Situação Atual" : "Não realizado"}</div>
+                            <div class="pref-comp-bar"><div class="pref-comp-fill" style="width:${larguraT1PrefComp}%;"></div></div>
+                            <span class="pref-comp-status" style="background:${corStatus};">${escapeHTMLPref(status)}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pref-comp-aspectos-wrap">
+                    <div class="pref-comp-aspectos-title">
+                        <span style="flex:1;height:1px;background:#b6d9e5;"></span>
+                        <span><i class="fas fa-chart-simple"></i> Evolução por Aspecto (T0 → T1)</span>
+                        <span style="flex:1;height:1px;background:#b6d9e5;"></span>
+                    </div>
+                    <div class="pref-comp-aspectos-grid">${aspectosCardsComparativoPref}</div>
+                </div>
             </div>
 
-            <div class="resumo-box pref-comparativo-impacto" style="border-left-color:#1DA6C8; background:#e8f7fb; margin-bottom:30px;">
+            <div class="resumo-box pref-comp-impacto">
                 <h2><i class="fas fa-chart-line"></i> Impacto Geral do Diagnóstico</h2>
                 <p>${gerarLeituraComparativoPrefeitura(deltaGeral, linhas, temT1)}</p>
             </div>
@@ -4659,7 +8264,9 @@
 
     function inicializarComparativoPrefeitura() {
         document.querySelector('.nav-item[data-page="pref-comparativo"]')?.addEventListener("click", renderizarComparativoPrefeitura);
-        document.getElementById("btnImprimirComparativoPref")?.addEventListener("click", () => window.print());
+        document.getElementById("btnImprimirComparativoPref")?.addEventListener("click", () => {
+            imprimirConteudoSeguro("#page-pref-comparativo .card", "Comparativo Prefeitura T0 x T1 - Pró-Catadores", "#168EAF");
+        });
     }
 
 
@@ -4841,13 +8448,17 @@
 
     function inicializarRelatorioPrefeitura() {
         document.querySelector('.nav-item[data-page="pref-relatorio"]')?.addEventListener("click", renderizarRelatorioPrefeitura);
-        document.getElementById("btnImprimirRelatorioPref")?.addEventListener("click", () => window.print());
+        document.getElementById("btnImprimirRelatorioPref")?.addEventListener("click", () => {
+            imprimirConteudoSeguro("#page-pref-relatorio .card", "Relatório Prefeitura - Pró-Catadores", "#168EAF");
+        });
     }
 
 
     function inicializarResumoPrefeitura() {
         document.querySelector('.nav-item[data-page="pref-resumo"]')?.addEventListener("click", renderizarResumoPrefeitura);
-        document.getElementById("btnImprimirResumoPref")?.addEventListener("click", () => window.print());
+        document.getElementById("btnImprimirResumoPref")?.addEventListener("click", () => {
+            imprimirConteudoSeguro("#page-pref-resumo .card", "Resumo Prefeitura - Pró-Catadores", "#168EAF");
+        });
     }
 
     function inicializarDiagnosticoPrefeitura() {
@@ -5019,7 +8630,7 @@
         const maturidade = classif(a.percentual);
         const corMaturidade = (typeof corClassificacaoPrefeitura === 'function') ? corClassificacaoPrefeitura(a.percentual) : '#2563eb';
         return `<div class="pref-analise-aspecto-robusta">
-            <div class="pref-aspecto-topo"><h3>${h(a.aspecto)}</h3><div><strong style="font-size:1.4rem;color:#0f5f73;">${a.percentual}%</strong> <span class="pref-prioridade-chip" style="background:${corMaturidade};">${h(maturidade)}</span></div></div>
+            <div class="pref-aspecto-topo"><h3>${h(a.aspecto)}</h3><div><strong style="font-size:1.4rem;color:#0f5f73;">${a.percentual}%</strong> <span class="pref-prioridade-chip pref-classificacao-chip" style="background:${corMaturidade};color:#ffffff !important;">${h(maturidade)}</span></div></div>
             <div class="pref-aspecto-corpo">
                 <h4>Leitura Técnica do Aspecto</h4>
                 ${textoBaseAspecto(a, todos)}
@@ -5051,7 +8662,7 @@
         return `<div class="pref-analise-integrada"><h3><i class="fas fa-network-wired"></i> Análise Integrada do Sistema Municipal</h3>${pars.map(p=>`<p>${h(p)}</p>`).join('')}</div>`;
     }
     function cardResumoAspectos(aspectos){
-        return `<div class="analise-tecnica-box" style="border-left-color:#1DA6C8;"><h3><i class="fas fa-chart-simple"></i> Desempenho por Aspecto</h3><div class="pref-resumo-aspectos">${aspectos.map(a=>`<div class="pref-resumo-card"><strong>${h(a.aspecto)}</strong><span>${a.percentual}%</span><small>${fmt(a.obtido,1)}/${fmt(a.maximo,1)} pontos | ${a.respondidas}/${a.total} respondidas</small><br><small style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:20px;background:${corClassificacaoPrefeitura(a.percentual)};color:white;font-weight:700;">${h(classif(a.percentual))}</small></div>`).join('')}</div></div>`;
+        return `<div class="analise-tecnica-box" style="border-left-color:#1DA6C8;"><h3><i class="fas fa-chart-simple"></i> Desempenho por Aspecto</h3><div class="pref-resumo-aspectos">${aspectos.map(a=>`<div class="pref-resumo-card"><strong>${h(a.aspecto)}</strong><span>${a.percentual}%</span><small>${fmt(a.obtido,1)}/${fmt(a.maximo,1)} pontos | ${a.respondidas}/${a.total} respondidas</small><br><small class="pref-status-aspecto" style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:20px;background:${corClassificacaoPrefeitura(a.percentual)};color:#ffffff;font-weight:900;">${h(classif(a.percentual))}</small></div>`).join('')}</div></div>`;
     }
     function renderResumoRobusto(){
         const container = document.getElementById('prefResumoContent');
@@ -5120,6 +8731,220 @@
         if (document.getElementById('page-pref-resumo')?.classList.contains('active-page')) renderResumoRobusto();
         if (document.getElementById('page-pref-relatorio')?.classList.contains('active-page')) renderRelatorioRobusto();
     }, 0);
+})();
+</script>
+
+
+<script>
+/* ====== V14.1 - Rodapé institucional em todos os módulos ====== */
+(function(){
+    const TEXTO_RODAPE_SISTEMA = 'Pró-Catadores | Diagnóstico Situacional | © 2026 Sebrae. Todos os direitos reservados.';
+    function aplicarRodapeSistema(){
+        document.querySelectorAll('.page > .card').forEach(card => {
+            if(!card.querySelector(':scope > .footer-sistema')){
+                const footer = document.createElement('div');
+                footer.className = 'footer-sistema';
+                footer.textContent = TEXTO_RODAPE_SISTEMA;
+                card.appendChild(footer);
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', aplicarRodapeSistema);
+    document.addEventListener('click', function(e){ if(e.target.closest('.nav-item')) setTimeout(aplicarRodapeSistema, 80); });
+    document.addEventListener('DOMContentLoaded', () => {
+        const main = document.querySelector('.main-content');
+        if(main) new MutationObserver(aplicarRodapeSistema).observe(main, {childList:true, subtree:true});
+    });
+    setTimeout(aplicarRodapeSistema, 300);
+})();
+</script>
+
+<script>
+/* ====== V15.2 - Funções de Comparativo Cooperativa padronizadas ====== */
+(function(){
+    function esc(txt){
+        return String(txt ?? '').replace(/[&<>"]/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]; });
+    }
+    function nomeAspectoCoop(nome){ return String(nome || '').replace('Aspectos ', ''); }
+    function classeDelta(delta){ return delta > 0 ? 'evolucao' : delta < 0 ? 'regressao' : 'estavel'; }
+    function statusDelta(delta){ return delta > 0 ? 'Evolução' : delta < 0 ? 'Regressão' : 'Estável'; }
+    function sinal(delta){ return (delta >= 0 ? '+' : '') + Number(delta || 0).toFixed(1) + ' p.p.'; }
+
+    window.renderizarComparativoT0T1 = function(){
+        const container = document.getElementById('comparativoContent');
+        if(!container) return;
+        const indicesT0 = calcularIndices(respostas_T0);
+        const indicesT1 = calcularIndices(respostas_T1);
+        const geralT0 = getIndiceGeral(indicesT0);
+        const geralT1 = getIndiceGeral(indicesT1);
+        const temT0 = temDiagnosticoCooperativa(respostas_T0);
+        const temT1 = temDiagnosticoCooperativa(respostas_T1);
+
+        if(!temT0 && !temT1){
+            container.innerHTML = '<div class="empty-module"><i class="fas fa-circle-info fa-3x"></i><h3 style="margin:16px 0;">Comparativo ainda indisponível</h3><p>Preencha e salve pelo menos o diagnóstico T0 e T1 para visualizar a evolução.</p></div>';
+            return;
+        }
+        if(!temT1){
+            renderizarComparativoAguardandoT1Cooperativa(container, indicesT0, geralT0);
+            return;
+        }
+
+        const diffGeral = geralT1 - geralT0;
+        const statusGeral = statusDelta(diffGeral);
+        const linhas = (aspectosNome || []).map(function(aspecto){
+            const t0 = (indicesT0.find(it => it.aspecto === aspecto) || {}).percentual || 0;
+            const t1 = (indicesT1.find(it => it.aspecto === aspecto) || {}).percentual || 0;
+            const delta = t1 - t0;
+            return { aspecto:nomeAspectoCoop(aspecto), t0, t1, delta, status:statusDelta(delta), classe:classeDelta(delta) };
+        });
+        const melhorados = linhas.filter(l=>l.delta>0).map(l=>l.aspecto);
+        const regredidos = linhas.filter(l=>l.delta<0).map(l=>l.aspecto);
+        const estaveis = linhas.filter(l=>l.delta===0).map(l=>l.aspecto);
+        const prioridade = [...linhas].sort((a,b)=>a.t1-b.t1)[0] || {aspecto:'Não identificado',t1:0,delta:0};
+        const maiorEvolucao = [...linhas].sort((a,b)=>b.delta-a.delta)[0] || prioridade;
+        const maiorRegressao = [...linhas].sort((a,b)=>a.delta-b.delta)[0] || prioridade;
+        const maisConsolidado = [...linhas].sort((a,b)=>b.t1-a.t1)[0] || prioridade;
+
+        const aspectosHtml = linhas.map(l => `
+            <div class="comparativo-aspecto-card ${l.classe}">
+                <h4>${esc(l.aspecto)}</h4>
+                <div class="linha"><strong>${l.t0.toFixed(1)}%</strong> → <strong>${l.t1.toFixed(1)}%</strong></div>
+                <span class="delta">${sinal(l.delta)}</span>
+            </div>`).join('');
+
+        const tabelaHtml = `<div class="plano-table-wrapper">
+            <table class="comparativo-tabela">
+                <thead><tr><th>Aspecto</th><th>T0</th><th>T1</th><th>Evolução</th><th>Status</th><th>Interpretação</th></tr></thead>
+                <tbody>${linhas.map(l => `<tr>
+                    <td><strong>${esc(l.aspecto)}</strong></td>
+                    <td>${l.t0.toFixed(1)}%</td>
+                    <td>${l.t1.toFixed(1)}%</td>
+                    <td class="${l.delta>0?'evolucao-up':l.delta<0?'evolucao-down':'evolucao-stable'}">${sinal(l.delta)}</td>
+                    <td><span class="badge-prioridade" style="background:${l.delta>0?'#15803d':l.delta<0?'#b91c1c':'#6b7280'};">${l.status}</span></td>
+                    <td style="font-size:0.85rem;">${gerarInterpretacaoAspecto(l.status, l.aspecto)}</td>
+                </tr>`).join('')}</tbody>
+            </table>
+        </div>`;
+
+        const avancosHtml = melhorados.length ? melhorados.map(a=>`<li><strong>${esc(a)}</strong> apresentou avanço no ciclo.</li>`).join('') : '<li>Nenhum aspecto apresentou avanço no período.</li>';
+        const regressoesHtml = regredidos.length ? regredidos.map(a=>`<li><strong>${esc(a)}</strong> requer atenção por perda de desempenho.</li>`).join('') : '<li>Nenhum aspecto apresentou regressão no período.</li>';
+        const estaveisHtml = estaveis.length ? estaveis.map(a=>`<li><strong>${esc(a)}</strong> permaneceu sem variação.</li>`).join('') : '<li>Não houve aspectos totalmente estáveis.</li>';
+        const obsHtml = (typeof gerarObservacoesComparativas === 'function') ? gerarObservacoesComparativas() : '';
+
+        container.innerHTML = `<div class="comparativo-unificado">
+            <div class="comparativo-top-grid">
+                <div class="comparativo-metric-card"><div class="label">Diagnóstico T0</div><div class="valor">${geralT0.toFixed(1)}%</div><div class="sub">${esc(classificaGeral(geralT0))}</div></div>
+                <div class="comparativo-metric-card evolucao"><div class="label">Evolução Geral</div><div class="valor">${sinal(diffGeral)}</div><div class="sub">${statusGeral}</div></div>
+                <div class="comparativo-metric-card"><div class="label">Diagnóstico T1</div><div class="valor">${geralT1.toFixed(1)}%</div><div class="sub">${esc(classificaGeral(geralT1))}</div></div>
+            </div>
+            <div class="comparativo-section-card"><h3><i class="fas fa-layer-group"></i> Evolução por Aspecto</h3><div class="comparativo-aspectos-grid">${aspectosHtml}</div></div>
+            <div class="comparativo-section-card"><h3><i class="fas fa-chart-line"></i> Impacto Geral do Diagnóstico</h3><p>${gerarImpactoGeralComparativo(geralT0, geralT1, diffGeral, melhorados, regredidos)}</p></div>
+            <div class="comparativo-radar-card"><h3><i class="fas fa-bullseye"></i> Gráfico Radar T0 x T1</h3>
+                <div class="radar-legend"><div class="legend-item"><div class="legend-color" style="background:#8c9aa8;opacity:.7;"></div><span>T0</span></div><div class="legend-item"><div class="legend-color" style="background:#1f7042;"></div><span>T1</span></div></div>
+                <div class="radar-canvas-container"><canvas id="comparativeRadarChart" width="500" height="400" style="max-width:100%; height:auto;"></canvas></div>
+                <div class="radar-insights">
+                    <div class="insight-radar-card" style="border-left-color:#15803d;"><div class="label">📈 Maior Evolução</div><div class="value">${esc(maiorEvolucao.aspecto)} <span class="highlight-evolution">(${sinal(maiorEvolucao.delta)})</span></div></div>
+                    <div class="insight-radar-card" style="border-left-color:#b91c1c;"><div class="label">📉 Maior Regressão</div><div class="value">${maiorRegressao.delta < 0 ? esc(maiorRegressao.aspecto) + ' <span class="highlight-regression">(' + sinal(maiorRegressao.delta) + ')</span>' : 'Sem regressão'}</div></div>
+                    <div class="insight-radar-card" style="border-left-color:#15803d;"><div class="label">🏆 Mais Consolidado T1</div><div class="value">${esc(maisConsolidado.aspecto)} <span class="highlight-evolution">(${maisConsolidado.t1.toFixed(1)}%)</span></div></div>
+                </div>
+            </div>
+            <div class="comparativo-insights-grid">
+                <div class="insight-card" style="border-left-color:#15803d;"><h3><i class="fas fa-arrow-up"></i> Principais Avanços</h3><ul>${avancosHtml}</ul></div>
+                <div class="insight-card" style="border-left-color:#6b7280;"><h3><i class="fas fa-minus"></i> Aspectos Estagnados</h3><ul>${estaveisHtml}</ul></div>
+                <div class="insight-card comparativo-prioridade"><h3><i class="fas fa-bullseye"></i> Prioridade do Próximo Ciclo</h3><p><strong>${esc(prioridade.aspecto)}</strong> deve ser tratado como prioridade, pois apresenta o menor desempenho em T1 (${prioridade.t1.toFixed(1)}%).</p><p><strong>Ganho esperado:</strong> elevar a maturidade operacional e institucional da cooperativa no próximo ciclo.</p></div>
+            </div>
+            <div class="comparativo-insights-grid"><div class="insight-card" style="border-left-color:#b91c1c;"><h3><i class="fas fa-arrow-down"></i> Pontos de Atenção</h3><ul>${regressoesHtml}</ul></div></div>
+            ${obsHtml}
+            <div class="comparativo-section-card"><h3><i class="fas fa-table"></i> Tabela Técnica de Evolução</h3>${tabelaHtml}</div>
+        </div>`;
+
+        setTimeout(function(){ renderizarRadarComparativo(linhas.map(l=>l.t0), linhas.map(l=>l.t1), linhas.map(l=>l.aspecto)); }, 150);
+    };
+
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('btnImprimirComparativoCoop')?.addEventListener('click', function(){
+            imprimirConteudoSeguro('#page-comparativo .card', 'Comparativo Cooperativa T0 x T1 - Pró-Catadores', '#1e7b56');
+        });
+    });
+})();
+</script>
+
+
+<script>
+/* ====== V15.7 - Correção do Radar no Comparativo Cooperativa T0 x T1 ======
+   Correção pontual: a função renderizarComparativoT0T1 chamava renderizarRadarComparativo,
+   mas a função global não estava disponível nesta versão. Mantém cadastro e demais módulos intactos. */
+(function(){
+    window.renderizarRadarComparativo = function(dadosT0, dadosT1, labelsAspectos){
+        const canvas = document.getElementById('comparativeRadarChart');
+        if(!canvas) return;
+
+        const labels = (labelsAspectos || []).map(function(l){ return String(l || '').replace('Aspectos ', ''); });
+        const t0 = (dadosT0 || []).map(function(v){ return Number(v) || 0; });
+        const t1 = (dadosT1 || []).map(function(v){ return Number(v) || 0; });
+
+        if(!window.Chart || !canvas.getContext){
+            const fallback = document.createElement('div');
+            fallback.style.padding = '16px';
+            fallback.style.border = '1px solid #dce8e4';
+            fallback.style.borderRadius = '18px';
+            fallback.style.background = '#f8fafc';
+            fallback.innerHTML = '<strong>Radar indisponível no navegador.</strong><br>Os dados comparativos continuam disponíveis nos cards e na tabela técnica.';
+            canvas.replaceWith(fallback);
+            return;
+        }
+
+        if(window.comparativeRadarChart && typeof window.comparativeRadarChart.destroy === 'function'){
+            window.comparativeRadarChart.destroy();
+        }
+
+        window.comparativeRadarChart = new Chart(canvas.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'T0',
+                        data: t0,
+                        borderColor: 'rgba(140,154,168,0.95)',
+                        backgroundColor: 'rgba(140,154,168,0.18)',
+                        pointBackgroundColor: 'rgba(140,154,168,1)',
+                        pointBorderColor: '#ffffff',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'T1',
+                        data: t1,
+                        borderColor: 'rgba(31,112,66,0.98)',
+                        backgroundColor: 'rgba(31,112,66,0.18)',
+                        pointBackgroundColor: 'rgba(31,112,66,1)',
+                        pointBorderColor: '#ffffff',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: function(ctx){ return ctx.dataset.label + ': ' + Number(ctx.raw || 0).toFixed(1) + '%'; } } }
+                },
+                scales: {
+                    r: {
+                        min: 0,
+                        max: 100,
+                        ticks: { stepSize: 20, backdropColor: 'transparent', color: '#64748b' },
+                        grid: { color: 'rgba(100,116,139,0.22)' },
+                        angleLines: { color: 'rgba(100,116,139,0.22)' },
+                        pointLabels: { color: '#1a2c3e', font: { size: 12, weight: '600' } }
+                    }
+                }
+            }
+        });
+    };
 })();
 </script>
 
